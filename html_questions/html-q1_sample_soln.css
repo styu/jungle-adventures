@@ -1,0 +1,16 @@
+body{
+	background: #416923;
+}
+
+.hello-world{
+	color:#FFF; 
+	font-family:'Lilita One', cursive; 
+	font-size: 50px; 
+	left:50%; 
+	margin-left:-134px; 
+	margin-top:-28px;
+	position:absolute; 
+	text-shadow: inset -2px -2px 2px #374683;
+	top:50%; 
+
+}
