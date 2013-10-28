@@ -1,168 +1,56 @@
+<!DOCTYPE html>
 <html>
-<head>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,300,400,600,700,800' rel='stylesheet' type='text/css'>
-<style type="text/css">
+    <head>
+        <title>Jungle Adventures - 6.470 Mini Web Programming Competition</title>
+        <script data-main="scripts/main" src="scripts/require.js"></script>
+        <script>
+        require.config({
+		    urlArgs: "bust=" + (new Date()).getTime()
+		});
 
-html { 
-	font-family: 'Open Sans', sans-serif;
-	background: url(webbackground.png) no-repeat center center fixed; 
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	margin: 0;
-	padding: 0;
-}
-#containingform{
-	background-color: rgba(0,0,0,0.6);
-	padding: 20px;
-	color: #ffffff;
-	position: absolute;
-	right: 0px;
-	top: 0px;
-	width: 320px;
-}
-h2{
-	font-weight: 400;
-	font-size: 16px;
-}
-h3{
-	font-weight: 400;
-	font-size: 14px;
-}
-body{
-	font-weight: 400;
-	font-size: 13px;
-}
-a{
-	color: #FFFF00;
-}
-#titlediv{
-	height: 300px;
-	width: 400px;
-	background-image: url(webbackground_title.png); 
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	position: fixed;
-	top: 50%;
-	left: 8%;
-	margin-top: -170px;
-	z-index: -1;
-}
-
-</style>
-<title>6.470 Jungle Adventures</title>
-</head>
-<body>
-
-<div id='containingform'>
-<h2>Please sign up as teams of 1-3. Items marked with an asterisk (*) are required.</h2>
-<h3>Check out our <a href='https://www.facebook.com/events/560101967396659/560158197391036/'>Facebook event</a> for details and updates </h3>
-<div class="ss-form"><form action="https://docs.google.com/forms/d/18nW2y_tKiFdDCWkWOPN_gAvlhyQg1Z8mqiqlXAxmAW8/formResponse" method="POST" id="ss-form" target="_self" onsubmit=""><ol style="padding-left: 0">
-<div class="ss-form-question errorbox-good">
-<div dir="ltr" class="ss-item ss-item-required ss-text"><div class="ss-form-entry"><label class="ss-q-item-label" for="entry_572050167"><div class="ss-q-title">Team Name
-<label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
-<span class="ss-required-asterisk">*</span></div>
-<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-<input type="text" name="entry.572050167" value="" class="ss-q-short" id="entry_572050167" dir="auto" aria-required="true" required="" title="">
-<div class="error-message"></div>
-<div class="required-message">This is a required question</div>
-
-</div></div></div> <div class="ss-form-question errorbox-good">
-<div dir="ltr" class="ss-item ss-item-required ss-text"><div class="ss-form-entry"><label class="ss-q-item-label" for="entry_1709956076"><div class="ss-q-title">Team Member 1 Name
-<label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
-<span class="ss-required-asterisk">*</span></div>
-<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-<input type="text" name="entry.1709956076" value="" class="ss-q-short" id="entry_1709956076" dir="auto" aria-required="true" required="" title="">
-<div class="error-message"></div>
-<div class="required-message">This is a required question</div>
-
-</div></div></div> <div class="ss-form-question errorbox-good">
-<div dir="ltr" class="ss-item ss-item-required ss-text"><div class="ss-form-entry"><label class="ss-q-item-label" for="entry_696914727"><div class="ss-q-title">Team Member 1 Email
-<label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
-<span class="ss-required-asterisk">*</span></div>
-<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-<input type="text" name="entry.696914727" value="" class="ss-q-short" id="entry_696914727" dir="auto" aria-required="true" required="" title="">
-<div class="error-message"></div>
-<div class="required-message">This is a required question</div>
-
-</div></div></div> <div class="ss-form-question errorbox-good">
-<div dir="ltr" class="ss-item ss-item-required ss-select"><div class="ss-form-entry"><label class="ss-q-item-label" for="entry_832063591"><div class="ss-q-title">Team Member 1 Shirt Size
-<label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
-<span class="ss-required-asterisk">*</span></div>
-<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-<select name="entry.832063591" id="entry_832063591" aria-required="true" required=""><option value=""></option>
-<option value="S">S</option> <option value="M">M</option> <option value="L">L</option> <option value="XL">XL</option> <option value="XXL">XXL</option></select>
-<div class="required-message">This is a required question</div>
-</div></div></div> <div class="errorbox-good">
-<div dir="ltr" class="ss-item  ss-section-header"><div class="ss-form-entry"><h2 class="ss-section-title">Team Member 2</h2>
-<div class="ss-section-description ss-no-ignore-whitespace"></div>
-
-</div></div></div> <div class="ss-form-question errorbox-good">
-<div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry"><label class="ss-q-item-label" for="entry_1029085069"><div class="ss-q-title">Team Member 2 Name
-</div>
-<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-<input type="text" name="entry.1029085069" value="" class="ss-q-short" id="entry_1029085069" dir="auto" title="">
-<div class="error-message"></div>
-<div class="required-message">This is a required question</div>
-
-</div></div></div> <div class="ss-form-question errorbox-good">
-<div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry"><label class="ss-q-item-label" for="entry_461173398"><div class="ss-q-title">Team Member 2 Email
-</div>
-<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-<input type="text" name="entry.461173398" value="" class="ss-q-short" id="entry_461173398" dir="auto" title="">
-<div class="error-message"></div>
-<div class="required-message">This is a required question</div>
-
-</div></div></div> <div class="ss-form-question errorbox-good">
-<div dir="ltr" class="ss-item  ss-select"><div class="ss-form-entry"><label class="ss-q-item-label" for="entry_1207286975"><div class="ss-q-title">Team Member 2 Shirt Size
-</div>
-<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-<select name="entry.1207286975" id="entry_1207286975"><option value=""></option>
-<option value="S">S</option> <option value="M">M</option> <option value="L">L</option> <option value="XL">XL</option> <option value="XXL">XXL</option></select>
-<div class="required-message">This is a required question</div>
-</div></div></div> <div class="errorbox-good">
-<div dir="ltr" class="ss-item  ss-section-header"><div class="ss-form-entry"><h2 class="ss-section-title">Team Member 3</h2>
-<div class="ss-section-description ss-no-ignore-whitespace"></div>
-
-</div></div></div> <div class="ss-form-question errorbox-good">
-<div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry"><label class="ss-q-item-label" for="entry_1240397565"><div class="ss-q-title">Team Member 3 Name
-</div>
-<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-<input type="text" name="entry.1240397565" value="" class="ss-q-short" id="entry_1240397565" dir="auto" title="">
-<div class="error-message"></div>
-<div class="required-message">This is a required question</div>
-
-</div></div></div> <div class="ss-form-question errorbox-good">
-<div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry"><label class="ss-q-item-label" for="entry_728067750"><div class="ss-q-title">Team Member 3 Email
-</div>
-<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-<input type="text" name="entry.728067750" value="" class="ss-q-short" id="entry_728067750" dir="auto" title="">
-<div class="error-message"></div>
-<div class="required-message">This is a required question</div>
-
-</div></div></div> <div class="ss-form-question errorbox-good">
-<div dir="ltr" class="ss-item  ss-select"><div class="ss-form-entry"><label class="ss-q-item-label" for="entry_508850756"><div class="ss-q-title">Team Member 3 Shirt Size
-</div>
-<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
-<select name="entry.508850756" id="entry_508850756"><option value=""></option>
-<option value="S">S</option> <option value="M">M</option> <option value="L">L</option> <option value="XL">XL</option> <option value="XXL">XXL</option></select>
-<div class="required-message">This is a required question</div>
-</div></div></div>
-<input type="hidden" name="draftResponse" value="[]
-">
-<input type="hidden" name="pageHistory" value="0">
-
-
-<div class="ss-item ss-navigate"><table id="navigation-table"><tbody><tr><td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
-<input type="submit" name="submit" value="Submit" id="ss-submit"></td>
-</tr></tbody></table></div></ol></form></div>
-
-</div>
-
-
-<div id='titlediv'></div>
-</body>
+		</script>
+		<link href='http://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Cherry+Swash:400,700' rel='stylesheet' type='text/css'>
+		
+  		<link rel="stylesheet" href="css/reset.css">
+  		<link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+    	<canvas id="c"></canvas>
+    	<h1>
+    		Jungle Adventures
+    	</h1>
+    	<h2>
+    		<em>6.470</em> Mini Web Programming Competition
+    	</h2>
+    	<h3>
+    		Put your web programming skills to the test in our hand-crafted HTML/CSS, JavaScript, and web-backend challenges. Compete in teams of 3! Beginners welcome - we have plenty of staff and help if you're new to web programming!
+    	</h3>
+    	<a class="registerBtn" href="http://bit.ly/6470Jungle">register now!</a>
+    	<div class="hello">
+    		<span class="timedate">
+    			<em>November 9, 2013.</em> Noon - 3:30pm.
+    		</span>
+    		<span class="location">
+    			Grier Room (34-401). <a href="http://whereis.mit.edu/?go=34-401">where?</a>
+    		</span>
+    		<h3>
+    			Deep within the jungle...
+    		</h3>
+    		<p>
+    			9 iPad Minis. 36 Amazon Giftcards. Over 40 Raffle Prizes.<br />
+    			We'll have sample problems posted shortly!
+    		</p>
+    		<h3>
+    			What is 6.470?
+    		</h3>
+    		<p>
+    			6.470 is a web programming competition that happens over IAP. Each year, hundreds of students compete for a prize pool of over $30,000, by designing and developing a website under a certain set of criteria. You can learn more about 6.470 <a href="http://bit.ly/mit6470">here</a>!
+    		</p>
+    	</div>
+    	<div class="thanks">
+    	<h3>Sponsored by</h3>
+		<p><a href="http://www.meteor.com/"><img width="300" src="http://weusethat.com/images/featured/meteor.png"></a></p>
+		</div>
+    </body>
 </html>
