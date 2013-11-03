@@ -4,10 +4,11 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-autopublish
 insecure
 preserve-inputs
 accounts-base
 accounts-password
 accounts-ui
 accounts-github
+roles
+email
