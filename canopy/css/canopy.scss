@@ -1,0 +1,94 @@
+body {
+	font-family: sans-serif;
+	font-weight: 300;
+	background-color: #BACACC;
+	padding: 20px;
+}
+
+.container {
+	background-color: #fff;
+	padding: 10px;
+	position: relative;
+	min-height: calc(100% - 60px);
+	min-height: -webkit-calc(100% - 60px);
+	overflow: auto;
+} 
+
+.leftbar {
+	width: 180px;
+	float: left;
+	display: block;
+	
+	h1 {
+		opacity: 0.3;
+		font-size: 14px;
+		margin-bottom: 5px;
+	}
+	h2 {
+		font-size: 18px;
+		font-weight: 600;
+		color: #006470;
+		margin-bottom: 20px;
+	}
+	ul {
+		li {
+			margin-bottom: 10px;
+			padding: 5px 10px 5px;
+			border-left: 3px solid #FFA95E;
+			
+			&:hover {
+				background-color: #EDF2F2;
+				cursor: pointer;
+			}
+			
+			&.completed {
+				border-left-color: #006470;
+				
+				.title {
+					color: #555;
+				}
+				
+				&:hover {
+					background-color: inherit;
+				}
+			}
+			
+			&.locked {
+				border-left-color: #ccc;
+				
+				.title {
+					color: #aaa;
+				}
+				.title:before
+				{
+					content: url('http://www.k-state.edu/its/images/lock_black.png');
+					margin-right: 7px;
+				}
+			}
+		}
+	}
+	.title {
+		margin-bottom: 3px;
+		font-weight: 400;
+	}
+	.desc {
+		font-size: 13px;
+		opacity: 0.5;
+	}
+}
+
+.content {
+	padding: 10px;
+	margin-left: 200px;
+	
+	h1 {
+		font-size: 36px;
+		opacity: 0.3;
+		margin-bottom: 10px;
+	}
+}
+
+/* I'm ruining your CSS, accounts-ui*/
+
+#login-dropdown-list {
+}
