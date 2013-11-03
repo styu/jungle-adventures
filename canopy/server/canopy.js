@@ -1,3 +1,5 @@
+
+/*
 if (Meteor.isClient) {
   Template.hello.greeting = function () {
     return "Welcome to canopy.";
@@ -20,6 +22,7 @@ if (Meteor.isClient) {
     }
   });
 }
+*/
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
@@ -32,3 +35,4 @@ if (Meteor.isServer) {
 */
   });
 }
+
