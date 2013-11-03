@@ -33,6 +33,8 @@ if (Meteor.isServer) {
     	password: "notbob",
     	profile: {}});
 */
+  //console.log(Meteor.users);
   });
+
 }
 
