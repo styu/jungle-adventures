@@ -16,6 +16,42 @@ Template.content.greeting = function() {
   }
 }
 
+function timeLeft(date) {
+  var end = moment(date).add('minutes', 45);
+  var now = moment(new Date()).unix();
+  var timeleft = end.unix() - now;
+  if (timeleft < 0) {
+    timeleft = 0;
+  }
+  return timeleft;
+}
+
+Template.content.timer = function() {
+  if (Meteor.user()) {
+    if (_.isUndefined(Session.get("timer"))) {
+      var date = Status.findOne({title: "questionStatus"}).timestart;
+      Session.set("timer", timeLeft(date));
+    }
+    var minutes = Math.round(Session.get("timer") / 60) + ":";
+    var seconds = Session.get("timer") % 60;
+    if (seconds.toString().length < 2) {
+      seconds = "0" + seconds;
+    }
+    return minutes + seconds;
+  }
+}
+
+function updateTimer() {
+  var date = Status.findOne({title: "questionStatus"}).timestart;
+  if (Session.get("timer") - 1 >= 0) {
+    Session.set("timer", Session.get("timer") - 1);
+  } else {
+    Session.set("timer", 0);
+  }
+}
+
+Meteor.setInterval(updateTimer, 1000);
+
 Template.content.helpers({
   isHTML: function() {
     if (Meteor.user()) {
@@ -40,8 +76,7 @@ Template.content.helpers({
   }
 });
 
-Template.content.events({
-  'click .question': function (event, template) {
+var test = function (event, template) {
     if (Meteor.user() && !event.currentTarget.classList.contains('locked')) {
       var template = event.currentTarget.id;
       console.log(template);
@@ -50,7 +85,11 @@ Template.content.events({
       }));
     }
   }
+
+Template.content.events({
+  'click .question': test
 });
+
 
 Template.admin.helpers({
   hasStarted: function() {
@@ -86,8 +125,11 @@ Template.admin.events({
     if (Meteor.user() && Roles.userIsInRole(Meteor.user(), ["admin"])) {
       var newstatus = event.currentTarget.id;
       var status = Status.findOne({title: "questionStatus"});
+      var date = new Date();
       Status.update({_id: status._id}, {$set:{'status': newstatus,
-                                   'timestart': (new Date())}});
+                                   'timestart': date}});
+      Session.set("timer", timeLeft(date));
+      console.log(Session.get("timer"));
     }
   },
   'tap .checkoffbtn': checkoffClick,
