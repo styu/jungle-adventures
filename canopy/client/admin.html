@@ -1,6 +1,7 @@
 <template name="admin">
   {{loginButtons}}
 <p>HELLO ADMIN</p>
+{{#if isReady}}
 {{#if hasStarted}}
 <h2>The contest has started. We are currently on {{currentStatus}}. Click a button to advance to the next one</h2>
 <p>{{currentStatus}} started at {{currentStartTime}}</p>
@@ -12,4 +13,7 @@
 <button id='js' class='start'>Start Javascript</button>
 <button id='sql' class='start'>Start SQL</button>
 <button id='none' class='start'>Stop the contest</button>
+{{else}}
+Loading...
+{{/if}}
 </template>

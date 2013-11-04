@@ -1,7 +1,8 @@
 console.log("client-canopy");
 
+
+var statusHandle = Meteor.subscribe('status');
 Status = new Meteor.Collection('status');
-Meteor.subscribe('status');
 
 Template.login.greeting = function () {
   if (!Meteor.user()) {
@@ -15,24 +16,49 @@ Template.content.greeting = function() {
   }
 }
 
+Template.content.helpers({
+  isHTML: function() {
+    if (Meteor.user()) {
+      return !_.isUndefined(Status.findOne({title: "questionStatus"})) &&
+                Status.findOne({title: "questionStatus"}).status === 'html';
+    }
+  },
+  isJS: function() {
+    if (Meteor.user()) {
+      return !_.isUndefined(Status.findOne({title: "questionStatus"})) &&
+                Status.findOne({title: "questionStatus"}).status === 'js';
+    }
+  },
+  isSQL: function() {
+    if (Meteor.user()) {
+      return !_.isUndefined(Status.findOne({title: "questionStatus"})) &&
+                Status.findOne({title: "questionStatus"}).status === 'sql';
+    }
+  }
+});
+
+Template.content.events({
+  'click .question': function (event, template) {
+    if (Meteor.user() && !event.currentTarget.hasClass('locked')) {
+      var template = event.currentTarget.name;
+      Template.content.question = Meteor.render( function() {
+        return Template[template]();
+      });
+    }
+  }
+});
+
 Template.admin.helpers({
   hasStarted: function() {
     if (Meteor.user() && Roles.userIsInRole(Meteor.user(), ["admin"])) {
-      if (_.isUndefined(Status.findOne({title: "questionStatus"}))) {
-        Status.insert({title: "questionStatus",
-                       status: "none",
-                       time: 0});
-      }
+      Status.find().forEach(function(status) {
+        console.log(status);
+      });
       return Status.findOne({title: "questionStatus"}).status !== 'none';
     }
   },
   currentStatus: function() {
     if (Meteor.user() && Roles.userIsInRole(Meteor.user(), ["admin"])) {
-      if (_.isUndefined(Status.findOne({title: "questionStatus"}))) {
-        Status.insert({title: "questionStatus",
-                       status: "none",
-                       time: 0});
-      }
       return Status.findOne({title: "questionStatus"}).status;
     }
   },
@@ -41,6 +67,9 @@ Template.admin.helpers({
       var date = Status.findOne({title: "questionStatus"}).timestart;
       return moment(date).format("hh:mm:ss A");
     }
+  },
+  isReady: function() {
+    return statusHandle.ready();
   }
 });
 

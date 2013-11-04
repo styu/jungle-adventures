@@ -1,33 +1,13 @@
 <template name="content">
   {{loginButtons}}
 <div class="container">
-	<div class="leftbar">
-		<h1>Chapter 1</h1>
-		<h2>HTML/CSS</h2>
-		<ul>
-			<li>
-				<div class="title">Hello, world</div>
-				<div class="desc">10 points - 7 minutes</div>
-			</li>
-			<li>
-				<div class="title">Badges and Badgers</div>
-				<div class="desc">15 points - 7 minutes</div>
-			</li>
-			<li class="completed">
-				<div class="title">The CSS File Report</div>
-				<div class="desc">25 points - 10 minutes</div>
-			</li>
-			<li class="locked">
-				<div class="title">Best Compass</div>
-				<div class="desc">25 points - 12 minutes</div>
-			</li>
-		</ul>
-		<div class="top-logo">
-			<img src="images/leafsmall.png" />
-		</div>
-	</div>
+	{{#if isHTML}}
+    {{> htmlnav}}
+  {{/if}}
 	<div class="content">
-		<h1>6.470 Jungle Adventures</h1>
+    {{question}}
+    <!-- This will be loaded by template name -->
+		<!-- <h1>6.470 Jungle Adventures</h1>
 		<p>Hello. Click a question to get started!</p>
 		<h2>Mission Briefing</h2>
 		<p>Yes, you are a monkey</p>
@@ -38,7 +18,7 @@
 			
 		</p>
 		<a class="downloadable">code.zip</a>
-		<a class="downloadable">code.zip</a>
+		<a class="downloadable">code.zip</a> -->
 	</div>
 </div>
 
