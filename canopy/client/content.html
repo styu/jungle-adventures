@@ -1,24 +1,14 @@
 <template name="content">
   {{loginButtons}}
 <div class="container">
-	{{#if isHTML}}
-    {{> htmlnav}}
+  {{#if isReady}}
+  	{{#if isHTML}}
+      {{> htmlnav}}
+    {{/if}}
+  {{else}}
+    Loading...
   {{/if}}
 	<div class="content">
-    {{question}}
-    <!-- This will be loaded by template name -->
-		<!-- <h1>6.470 Jungle Adventures</h1>
-		<p>Hello. Click a question to get started!</p>
-		<h2>Mission Briefing</h2>
-		<p>Yes, you are a monkey</p>
-		<h2>Objective</h2>
-		<p>
-			RETRIEVE ALL THE BANANAS!<br />
-			No banana left behind...
-			
-		</p>
-		<a class="downloadable">code.zip</a>
-		<a class="downloadable">code.zip</a> -->
 	</div>
 </div>
 

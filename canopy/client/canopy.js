@@ -34,16 +34,20 @@ Template.content.helpers({
       return !_.isUndefined(Status.findOne({title: "questionStatus"})) &&
                 Status.findOne({title: "questionStatus"}).status === 'sql';
     }
+  },
+  isReady: function() {
+    return statusHandle.ready();
   }
 });
 
 Template.content.events({
   'click .question': function (event, template) {
-    if (Meteor.user() && !event.currentTarget.hasClass('locked')) {
-      var template = event.currentTarget.name;
-      Template.content.question = Meteor.render( function() {
-        return Template[template]();
-      });
+    if (Meteor.user() && !event.currentTarget.classList.contains('locked')) {
+      var template = event.currentTarget.id;
+      console.log(template);
+      $('.content').html(Meteor.render(function() {
+        return Template[template]()
+      }));
     }
   }
 });
