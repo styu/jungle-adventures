@@ -18,11 +18,21 @@ Template.content.greeting = function() {
 Template.admin.helpers({
   hasStarted: function() {
     if (Meteor.user() && Roles.userIsInRole(Meteor.user(), ["admin"])) {
+      if (_.isUndefined(Status.findOne({title: "questionStatus"}))) {
+        Status.insert({title: "questionStatus",
+                       status: "none",
+                       time: 0});
+      }
       return Status.findOne({title: "questionStatus"}).status !== 'none';
     }
   },
   currentStatus: function() {
     if (Meteor.user() && Roles.userIsInRole(Meteor.user(), ["admin"])) {
+      if (_.isUndefined(Status.findOne({title: "questionStatus"}))) {
+        Status.insert({title: "questionStatus",
+                       status: "none",
+                       time: 0});
+      }
       return Status.findOne({title: "questionStatus"}).status;
     }
   },
