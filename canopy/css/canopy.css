@@ -2,20 +2,24 @@ body {
   font-family: sans-serif;
   font-weight: 300;
   background-color: #BACACC;
-  padding: 20px; }
+  padding: 20px;
+  height: 100%; }
 
 .container {
   background-color: #fff;
-  padding: 10px;
   position: relative;
-  min-height: calc(100% - 60px);
-  min-height: -webkit-calc(100% - 60px);
-  overflow: auto; }
+  overflow: auto;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); }
 
 .leftbar {
   width: 180px;
   float: left;
-  display: block; }
+  display: block;
+  padding: 20px; }
+  .leftbar .top-logo {
+    text-align: center;
+    margin: 30px 0; }
   .leftbar h1 {
     opacity: 0.3;
     font-size: 14px;
@@ -28,23 +32,27 @@ body {
   .leftbar ul li {
     margin-bottom: 10px;
     padding: 5px 10px 5px;
-    border-left: 3px solid #FFA95E; }
+    border-left: 3px solid #FFA95E;
+    transition: background-color 0.2s;
+    -webkit-transition: background-color 0.2s;
+    /* Safari */ }
     .leftbar ul li:hover {
-      background-color: #EDF2F2;
+      background-color: #f0f0f0;
       cursor: pointer; }
     .leftbar ul li.completed {
       border-left-color: #006470; }
       .leftbar ul li.completed .title {
         color: #555; }
-      .leftbar ul li.completed:hover {
-        background-color: inherit; }
     .leftbar ul li.locked {
       border-left-color: #ccc; }
       .leftbar ul li.locked .title {
         color: #aaa; }
       .leftbar ul li.locked .title:before {
         content: url("http://www.k-state.edu/its/images/lock_black.png");
-        margin-right: 7px; }
+        margin-right: 7px;
+        opacity: 0.3; }
+      .leftbar ul li.locked:hover {
+        background-color: inherit; }
   .leftbar .title {
     margin-bottom: 3px;
     font-weight: 400; }
@@ -53,11 +61,38 @@ body {
     opacity: 0.5; }
 
 .content {
-  padding: 10px;
-  margin-left: 200px; }
+  padding: 20px;
+  margin-left: 220px;
+  height: 100%; }
+  .content .downloadable {
+    padding: 10px 10px 10px 34px;
+    border: 1px solid #ccc;
+    width: 300px;
+    margin-top: 5px;
+    display: block;
+    background-image: url("/images/file.png");
+    background-position-y: center;
+    background-position-x: 8px;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    transition: border-color 0.2s;
+    -webkit-transition: border-color 0.2s;
+    /* Safari */ }
+    .content .downloadable:hover {
+      border-color: #444;
+      cursor: pointer; }
+  .content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: normal; }
   .content h1 {
     font-size: 36px;
     opacity: 0.3;
     margin-bottom: 10px; }
+  .content h2 {
+    color: #006470;
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 8px; }
 
 /* I'm ruining your CSS, accounts-ui*/
