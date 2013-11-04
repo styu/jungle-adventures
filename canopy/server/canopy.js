@@ -1,5 +1,6 @@
 ;(function () {
 
+  process.env.MAIL_URL = "smtp://6.470monkeys:6470m0nk3y@smtp.googlemail.com:465"
   "use strict";
 
 
@@ -83,6 +84,15 @@ Meteor.startup(function () {
 
 });
 
+Status = new Meteor.Collection('status');
+Meteor.publish("status", function () {
+  if (_.isUndefined(Status.findOne({title: "questionStatus"}))) {
+    Status.insert({title: "questionStatus",
+                   status: "none",
+                   time: 0});
+  }
+  return Status.find();
+});
 
 ////////////////////////////////////////////////////////////////////
 // Publish

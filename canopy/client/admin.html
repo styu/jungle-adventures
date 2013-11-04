@@ -1,3 +1,15 @@
 <template name="admin">
-HELLO ADMIN {{loginButtons}}
+  {{loginButtons}}
+<p>HELLO ADMIN</p>
+{{#if hasStarted}}
+<h2>The contest has started. We are currently on {{currentStatus}}. Click a button to advance to the next one</h2>
+<p>{{currentStatus}} started at {{currentStartTime}}</p>
+{{else}}
+<h2>The contest has not started. Click HTML/CSS to start!</h2>
+{{/if}}
+
+<button id='html' class='start'>Start HTML/CSS</button>
+<button id='js' class='start'>Start Javascript</button>
+<button id='sql' class='start'>Start SQL</button>
+<button id='none' class='start'>Stop the contest</button>
 </template>
