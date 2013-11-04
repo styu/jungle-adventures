@@ -2,6 +2,7 @@ console.log("client-canopy");
 
 
 var statusHandle = Meteor.subscribe('status');
+var userHandle = Meteor.subscribe('users');
 Status = new Meteor.Collection('status');
 
 Template.login.greeting = function () {
@@ -72,7 +73,7 @@ Template.content.helpers({
     }
   },
   isReady: function() {
-    return statusHandle.ready();
+    return statusHandle.ready() && userHandle.ready();
   }
 });
 
@@ -131,6 +132,29 @@ Template.admin.events({
       Session.set("timer", timeLeft(date));
       console.log(Session.get("timer"));
     }
+  },
+  'click .newteam': function (event, template) {
+    var info = {};
+    if ($('#teamname').val() !== '') {
+      info['teamname'] = $('#teamname').val();
+      info['members'] = [];
+      for (var i = 1; i <= 3; i++) {
+        if ($('#member' + i + 'name').val() !== '' && $('#member' + i + 'email').val() !== '') {
+          var email = $('#member' + i + 'email').val();
+          if (_.isUndefined(Meteor.users.findOne({'emails.address': email}))) {
+            info['members'].push({email: email,
+                                    name: $('#member' + i + 'name').val()});
+          }
+        }
+      }
+      console.log(info);
+      if (info['members'].length > 0) {
+        Meteor.call('newTeam', info);
+      } else {
+        console.log('error in form');
+      }
+    }
+    event.preventDefault();
   },
   'tap .checkoffbtn': checkoffClick,
   'click .checkoffbtn': checkoffClick
