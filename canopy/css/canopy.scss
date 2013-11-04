@@ -1,15 +1,15 @@
-html {
-}
-
 body {
+	height: 100%;
+	background-color: #BACACC;
+}
+.outercontainer {
 	font-family: sans-serif;
 	font-weight: 300;
-	background-color: #BACACC;
 	padding: 20px;
 	height: 100%;
 }
 
-.container {
+.user-container {
 	background-color: #fff;
 	position: relative;
 	overflow: auto;
@@ -130,6 +130,59 @@ body {
 		font-weight: 400;
 		font-size: 18px;
 		margin-bottom: 8px;
+	}
+}
+
+.admin-container {
+	padding: 10px;
+	font-family: sans-serif;
+	font-weight: 200;
+	
+	.rightlogin {
+		margin: 10px;
+		float: right;
+		text-align: right;
+	}
+	
+	h1 {
+		font-size: 20px;
+		margin-bottom: 10px;
+	}	
+	
+	h2 {
+		font-size: 18px;
+		font-weight: 300;
+		margin-bottom: 20px;
+		em {
+			font-weight: 500;
+		}
+	}
+	
+	table {
+		background-color: #eee;
+		font-size: 14px;
+		width: 100%;
+		margin-bottom: 10px;
+		
+		td {
+			text-align: center;
+			padding: 20px 0;
+			border: 1px solid #333;
+			
+			&.teamname {
+				background-color: #333;
+				color: #fff;
+				padding: 5px;
+			}
+			&.notdone {
+				background-color: #fff;
+				width: 25%;
+			}
+			&.done {
+				background-color: #76C900;
+				width: 25%;
+			}
+		}
 	}
 }
 

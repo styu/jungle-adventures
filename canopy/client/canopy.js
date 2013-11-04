@@ -77,6 +77,10 @@ Template.admin.helpers({
   }
 });
 
+var checkoffClick = function(event, template) {
+	alert('hey');
+}
+
 Template.admin.events({
   'click .start': function (event, template) {
     if (Meteor.user() && Roles.userIsInRole(Meteor.user(), ["admin"])) {
@@ -85,5 +89,7 @@ Template.admin.events({
       Status.update({_id: status._id}, {$set:{'status': newstatus,
                                    'timestart': (new Date())}});
     }
-  }
+  },
+  'tap .checkoffbtn': checkoffClick,
+  'click .checkoffbtn': checkoffClick
 });

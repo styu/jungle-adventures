@@ -1,6 +1,7 @@
 <template name="content">
-  {{loginButtons}}
-<div class="container">
+ 
+  <div class="outercontainer">
+<div class="user-container">
   {{#if isReady}}
   	{{#if isHTML}}
       {{> htmlnav}}
@@ -9,7 +10,8 @@
     Loading...
   {{/if}}
 	<div class="content">
+ {{loginButtons}}
 	</div>
 </div>
-
+</div>
 </template>

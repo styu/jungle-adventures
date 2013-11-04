@@ -1,7 +1,53 @@
 <template name="admin">
-  {{loginButtons}}
-<p>HELLO ADMIN</p>
+
+<meta name="viewport"
+  content="width=device-width,
+  minimum-scale=1.0, maximum-scale=1.0" />
+  
+<div class="admin-container">
+<div class="rightlogin">{{loginButtons align="right"}}</div>
+<h1>6.470 Jungle Adventures Admin Interface</h1>
 {{#if isReady}}
+
+<h2>Currently checking off for: <em>{{currentStatus}}</em></h2>
+
+<!-- duplicate this table for each 'team' or 'user' -->
+<table>
+	<tr>
+		<td colspan="4" class="teamname">
+			Flying Bobman
+		</td>
+	</tr>
+	<tr>
+		<td class="done checkoffbtn">
+			Hello
+		</td>
+		<td class="done checkoffbtn">
+			Badge
+		</td>
+		<td class="notdone checkoffbtn">
+			Doc
+		</td>
+		<td class="notdone checkoffbtn">
+			Table
+		</td>
+	</tr>
+		<td class="notdone checkoffbtn">
+			Compass
+		</td>
+		<td class="notdone checkoffbtn">
+			Footprint
+		</td>
+		<td class="notdone checkoffbtn">
+			Photo
+		</td>
+		<td class="notdone checkoffbtn">
+			BONUS
+		</td>
+	</tr>
+</table>
+
+
 {{#if hasStarted}}
 <h2>The contest has started. We are currently on {{currentStatus}}. Click a button to advance to the next one</h2>
 <p>{{currentStatus}} started at {{currentStartTime}}</p>
@@ -16,4 +62,5 @@
 {{else}}
 Loading...
 {{/if}}
+</div>
 </template>
