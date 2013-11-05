@@ -18,7 +18,7 @@ Template.content.greeting = function() {
 }
 
 function timeLeft(date) {
-  var end = moment(date).add('minutes', 45);
+  var end = moment(date).add('minutes', 44);
   var now = moment(new Date()).unix();
   var timeleft = end.unix() - now;
   if (timeleft < 0) {
@@ -29,29 +29,15 @@ function timeLeft(date) {
 
 Template.content.timer = function() {
   if (Meteor.user()) {
-    if (_.isUndefined(Session.get("timer"))) {
-      var date = Status.findOne({title: "questionStatus"}).timestart;
-      Session.set("timer", timeLeft(date));
-    }
-    var minutes = Math.round(Session.get("timer") / 60) + ":";
-    var seconds = Session.get("timer") % 60;
+    var timeLeft = Status.findOne({title: "timeStatus"}).timeLeft;
+    var minutes = Math.round(timeLeft / 60) + ":";
+    var seconds = timeLeft % 60;
     if (seconds.toString().length < 2) {
       seconds = "0" + seconds;
     }
     return minutes + seconds;
   }
 }
-
-function updateTimer() {
-  var date = Status.findOne({title: "questionStatus"}).timestart;
-  if (Session.get("timer") - 1 >= 0) {
-    Session.set("timer", Session.get("timer") - 1);
-  } else {
-    Session.set("timer", 0);
-  }
-}
-
-Meteor.setInterval(updateTimer, 1000);
 
 Template.content.helpers({
   isHTML: function() {
@@ -129,7 +115,10 @@ Template.admin.events({
       var date = new Date();
       Status.update({_id: status._id}, {$set:{'status': newstatus,
                                    'timestart': date}});
-      Session.set("timer", timeLeft(date));
+      //Session.set("timer", timeLeft(date));
+      status = Status.findOne({title: "timeStatus"});
+      Status.update({_id: status._id},
+                    {$set:{'started': true, 'timeLeft':timeLeft(date)}});
       console.log(Session.get("timer"));
     }
   },

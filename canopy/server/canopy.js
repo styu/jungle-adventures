@@ -132,6 +132,11 @@
                      status: "none",
                      time: 0});
     }
+    if (_.isUndefined(Status.findOne({title: "timeStatus"}))) {
+      Status.insert({title: "timeStatus",
+                     started: false,
+                     timeLeft: 0});
+    }
     return Status.find();
   });
 
@@ -141,4 +146,22 @@
       return Meteor.users.find();
     } // else display limited fields?
   });
+
+  function updateTimer() {
+    var time = Status.findOne({title: "timeStatus"});
+    if (_.isUndefined(time)) {
+      Status.insert({title: "timeStatus",
+                     started: false,
+                     timeLeft: 0});
+    } else {
+      if (time.timeLeft - 1 >= 0) {
+        var timeLeft = time.timeLeft - 1;
+        Status.update({_id: time._id}, {$set:{'timeLeft':timeLeft}});
+      } else {
+        Status.update({_id: time._id}, {$set:{'started': true, 'timeLeft':0}});
+      }
+    }
+  }
+
+  Meteor.setInterval(updateTimer, 1000);
 }());
