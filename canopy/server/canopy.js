@@ -77,7 +77,7 @@
       checkoff: function(id, questionID) {
       	if (_.isNull(Teams.findOne({_id:id}).contest.html[(questionID-1)].time)){
       		//TODO fill out this time thing
-      		var val = "TIMEGOESHERELOL";
+      		var val = new Date();
       	} else {
       		var val = null;
       	}
