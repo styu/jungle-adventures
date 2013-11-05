@@ -117,17 +117,24 @@
         });
 
         var questions = [];
-        var timelengths = [3, 5, 5, 5, 5, 5, 7, 10];
-        for (var i = 1; i <= 8; i++) {
+        var shortTitle =  ['hello', 'badge', 'folder', 'table', 'compass', 'footprint', 'photo', 'BONUS'];
+        var longTitle =  ['Hello Jungle', 'Badger Badge', 'Mission Report', 'Shopping List', 'Some Compass', 'Footprints', 'Photography', 'BONUS'];
+        
+        var pointValues = [7, 10, 10, 14, 15, 20, 24, 0];
+        var timelengths = [5, 5,  5,  5,  5,  5,  15, 0];
+        for (var i = 1; i <= 8 ; i++) {
           questions.push({id: i,
-          				  shorttitle: 'foo' + i,
-          				  title: 'test' + i,
+          				  shorttitle: shortTitle[i-1],
+          				  title: longTitle[i-1],
                           time: undefined,
                           locked: true,
-                          points: i * 5,
+                          points: pointValues[i-1],
                           file: 'html' + i,
                           timelength: timelengths[i-1]});
         }
+        
+        
+        
         // Unlock first 2 questions
         questions[0]['locked'] = false;
         questions[1]['locked'] = false;

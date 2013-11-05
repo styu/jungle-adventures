@@ -8,6 +8,7 @@ body {
 	font-weight: 300;
 	padding: 20px;
 	height: 100%;
+	min-width: 960px;
 }
 
 .user-container {
@@ -46,6 +47,33 @@ body {
 			vertical-align: center;
 			float: right;
 		}
+	}
+	.login-buttons-dropdown-align-right {
+		display: inline-block;
+	}
+	.accounts-dialog, .login-button, .login-link-text {
+		display: inline;
+	}
+	.login-button:hover, .login-link-text:hover, .login-close-text:hover {
+		cursor: pointer;
+		opacity: 0.8;
+	}
+	.login-close-text {
+		font-size: 10px;
+		line-height: 20px;
+		vertical-align: center;
+		opacity: 0.6;
+		font-weight: 600;
+		&:before {
+			content:"["
+		}
+		&:after {
+			content:"]"
+		}
+	}
+	
+	.login-close-text-clear {
+		display: none;
 	}
 }
 
@@ -88,8 +116,9 @@ body {
 			&.completed {
 				border-left-color: #006470;
 				
-				.title {
-					color: #555;
+				.title:before {
+					color: red;
+					content: url('http://images4.wikia.nocookie.net/__cb20130923051412/ogrebattlesaga/images/d/d9/Green_check.png');
 				}
 				
 			}
@@ -129,6 +158,8 @@ body {
 	height: 100%;
 	
 	.downloadable {
+		text-decoration: none;
+		color: #385BC7;
 		padding: 10px 10px 10px 34px;
 		border: 1px solid #ccc;
 		width: 300px;
@@ -150,7 +181,21 @@ body {
 	p {
 		margin-bottom: 20px;
 		font-size: 16px;
-		line-height: normal;
+		line-height: 19px;
+		
+	}
+	
+	em {
+		font-weight: 800;
+	}
+	
+	ul {
+		position: relative;
+		margin-bottom: 20px;
+		li:before{ content:"-"; position:relative; left:-5px;}
+		li {
+			margin: 0 0 5px 10px; 
+		}
 	}
 	
 	h1 {
@@ -201,6 +246,7 @@ body {
 			text-align: center;
 			padding: 20px 0;
 			border: 1px solid #333;
+			width: 25%;
 			
 			&.teamname {
 				background-color: #333;
@@ -209,19 +255,12 @@ body {
 			}
 			&.notdone {
 				background-color: #fff;
-				width: 25%;
 			}
 			&.done {
 				background-color: #76C900;
-				width: 25%;
 			}
 		}
 	}
-}
-
-/* I'm ruining your CSS, accounts-ui*/
-
-#login-dropdown-list {
 }
 
 .homepage-container {
@@ -303,7 +342,7 @@ body {
 	    	width: 250px;
 	    }
 
-	    .login-link-text {display: none;}
+	    //.login-link-text {display: none;}
 	    .login-close-text {display: none;}
 	    .login-buttons-dropdown-align-left {
 	    	margin-left: auto;
