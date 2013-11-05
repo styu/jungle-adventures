@@ -4,11 +4,11 @@
   {{#if isReady}}
   <ul>
     {{#each currentQuestions}}
-      <li class='question
+      <li class='question 
         {{#if locked}}
         locked
         {{/if}}
-      ' id='{{file}}'>
+        'id='{{file}}'>
         <div class='title'>{{title}}</div>
         <div class='desc'>{{points}} - {{length}} minutes</div>
       </li>

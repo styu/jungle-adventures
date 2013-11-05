@@ -17,7 +17,39 @@ body {
     box-shadow:  0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 } 
 
+.header {
+	display: block;
+	
+	.timer {
+		float: left;
+		width: 180px;
+		padding: 10px 20px;
+		background-color: #FF9500;
+		color: #eee;
+		font-size: 20px;
+		text-align: center;
+	}
+	.teaminfo {
+		padding: 10px 20px;
+		margin-left: 210px;
+		font-size: 20px;
+		background-color: #F3F7F2;
+		
+		em {
+			font-weight: 600;
+		}
+		
+		.score {
+			font-size: 14px;
+			line-height: 20px;
+			vertical-align: center;
+			float: right;
+		}
+	}
+}
+
 .leftbar {
+	clear: both;
 	width: 180px;
 	float: left;
 	display: block;

@@ -15,7 +15,31 @@ body {
   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); }
 
+.header {
+  display: block; }
+  .header .timer {
+    float: left;
+    width: 180px;
+    padding: 10px 20px;
+    background-color: #FF9500;
+    color: #eee;
+    font-size: 20px;
+    text-align: center; }
+  .header .teaminfo {
+    padding: 10px 20px;
+    margin-left: 210px;
+    font-size: 20px;
+    background-color: #F3F7F2; }
+    .header .teaminfo em {
+      font-weight: 600; }
+    .header .teaminfo .score {
+      font-size: 14px;
+      line-height: 20px;
+      vertical-align: center;
+      float: right; }
+
 .leftbar {
+  clear: both;
   width: 180px;
   float: left;
   display: block;

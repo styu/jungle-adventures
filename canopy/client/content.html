@@ -2,18 +2,27 @@
 <div class="outercontainer">
   <div class="user-container">
     {{#if isReady}}
-    <div class="leftbar">
-      
+  	<div class="header">	
+	  <div class='timer'>
+	    {{timer}}
+	  </div>
+	  <div class='teaminfo'>
+	  	Team <em>{{teamname}}</em>
+	  	<div class="score">Team Score: <em>210</em> | {{loginButtons align="right"}}</div>
+	  </div>
+  	</div>
+      {{#if isReady}}
         {{#if isHTML}}
           {{> htmlnav}}
         {{/if}}
-        <div class='timer'>
-          {{timer}}
-        </div>
-    </div>
+      {{else}}
+        Loading...
+      {{/if}}
   	<div class="content">
-    Team {{teamname}}
-   {{loginButtons}}
+    
+   
+   
+   
   	</div>
     {{else}}
         Loading...
