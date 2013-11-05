@@ -1,17 +1,21 @@
 <template name="content">
- 
-  <div class="outercontainer">
-<div class="user-container">
-  {{#if isReady}}
-  	{{#if isHTML}}
-      {{> htmlnav}}
-    {{/if}}
-  {{else}}
-    Loading...
-  {{/if}}
-	<div class="content">
- {{loginButtons}}
-	</div>
-</div>
+<div class="outercontainer">
+  <div class="user-container">
+    <div class="leftbar">
+      {{#if isReady}}
+        {{#if isHTML}}
+          {{> htmlnav}}
+        {{/if}}
+        <div class='timer'>
+          {{timer}}
+        </div>
+      {{else}}
+        Loading...
+      {{/if}}
+    </div>
+  	<div class="content">
+   {{loginButtons}}
+  	</div>
+  </div>
 </div>
 </template>

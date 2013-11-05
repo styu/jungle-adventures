@@ -9,7 +9,6 @@ preserve-inputs
 accounts-base
 accounts-password
 accounts-ui
-accounts-github
 roles
 email
 moment

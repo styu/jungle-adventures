@@ -2,6 +2,7 @@ console.log("client-canopy");
 
 
 var statusHandle = Meteor.subscribe('status');
+var userHandle = Meteor.subscribe('users');
 Status = new Meteor.Collection('status');
 
 Template.login.greeting = function () {
@@ -13,6 +14,28 @@ Template.login.greeting = function () {
 Template.content.greeting = function() {
   if (Meteor.user()) {
     return "HELLO, " + Meteor.user().emails[0].address;
+  }
+}
+
+function timeLeft(date) {
+  var end = moment(date).add('minutes', 44);
+  var now = moment(new Date()).unix();
+  var timeleft = end.unix() - now;
+  if (timeleft < 0) {
+    timeleft = 0;
+  }
+  return timeleft;
+}
+
+Template.content.timer = function() {
+  if (Meteor.user()) {
+    var timeLeft = Status.findOne({title: "timeStatus"}).timeLeft;
+    var minutes = Math.round(timeLeft / 60) + ":";
+    var seconds = timeLeft % 60;
+    if (seconds.toString().length < 2) {
+      seconds = "0" + seconds;
+    }
+    return minutes + seconds;
   }
 }
 
@@ -40,8 +63,7 @@ Template.content.helpers({
   }
 });
 
-Template.content.events({
-  'click .question': function (event, template) {
+var test = function (event, template) {
     if (Meteor.user() && !event.currentTarget.classList.contains('locked')) {
       var template = event.currentTarget.id;
       console.log(template);
@@ -50,7 +72,11 @@ Template.content.events({
       }));
     }
   }
+
+Template.content.events({
+  'click .question': test
 });
+
 
 Template.admin.helpers({
   hasStarted: function() {
@@ -86,9 +112,38 @@ Template.admin.events({
     if (Meteor.user() && Roles.userIsInRole(Meteor.user(), ["admin"])) {
       var newstatus = event.currentTarget.id;
       var status = Status.findOne({title: "questionStatus"});
+      var date = new Date();
       Status.update({_id: status._id}, {$set:{'status': newstatus,
-                                   'timestart': (new Date())}});
+                                   'timestart': date}});
+      //Session.set("timer", timeLeft(date));
+      status = Status.findOne({title: "timeStatus"});
+      Status.update({_id: status._id},
+                    {$set:{'started': true, 'timeLeft':timeLeft(date)}});
+      console.log(Session.get("timer"));
     }
+  },
+  'click .newteam': function (event, template) {
+    var info = {};
+    if ($('#teamname').val() !== '') {
+      info['teamname'] = $('#teamname').val();
+      info['members'] = [];
+      for (var i = 1; i <= 3; i++) {
+        if ($('#member' + i + 'name').val() !== '' && $('#member' + i + 'email').val() !== '') {
+          var email = $('#member' + i + 'email').val();
+          if (_.isUndefined(Meteor.users.findOne({'emails.address': email}))) {
+            info['members'].push({email: email,
+                                    name: $('#member' + i + 'name').val()});
+          }
+        }
+      }
+      console.log(info);
+      if (info['members'].length > 0) {
+        Meteor.call('newTeam', info);
+      } else {
+        console.log('error in form');
+      }
+    }
+    event.preventDefault();
   },
   'tap .checkoffbtn': checkoffClick,
   'click .checkoffbtn': checkoffClick
