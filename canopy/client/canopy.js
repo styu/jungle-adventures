@@ -73,7 +73,7 @@ Template.content.helpers({
     }
   },
   isReady: function() {
-    return statusHandle.ready() && userHandle.ready();
+    return statusHandle.ready();
   }
 });
 

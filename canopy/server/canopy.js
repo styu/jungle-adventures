@@ -105,17 +105,16 @@
 
         var questions = {};
         var jsQuestions = {};
-        for (var i = 1; i <= 7; i++) {
+        for (var i = 1; i <= 8; i++) {
           questions[i] = {title: 'test' + i,
                           time: undefined,
-                          locked: false};
+                          locked: false,
+                          points: i * 5};
           jsQuestions[i] = {title: 'test' + i,
                             time: undefined,
-                            locked: false};
+                            locked: false,
+                            points: i * 5};
         }
-        jsQuestions[8] = {title: 'test8',
-                          time: undefined,
-                          locked: false};
         Teams.insert({teamName: info['teamname'],
                       users: ids,
                       contest: {html: questions,
