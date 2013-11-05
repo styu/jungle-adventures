@@ -117,6 +117,9 @@ Template.content.events({
   'click .question': test
 });
 
+Template.admin.teams = function(){
+  return Teams.find();
+}
 
 Template.admin.helpers({
   hasStarted: function() {
@@ -140,11 +143,35 @@ Template.admin.helpers({
   },
   isReady: function() {
     return statusHandle.ready();
+  },
+  isSet: function(q, n) {
+  	if (n == 1){
+  	  if (q == '1' || q == '2' || q == '3' || q == '4'){
+  		return true
+  	  } else {
+  	  	return false
+  	  }
+  	} else {
+  	  if (q == '1' || q == '2' || q == '3' || q == '4'){
+  		return false
+  	  } else {
+  	  	return true
+  	  }
+  	}
+  },
+  isCompleted: function(t) {
+  	return _.isNull(t) ? "" : "done";
   }
 });
 
 var checkoffClick = function(event, template) {
-	alert('hey');
+	var $cur = $(event.currentTarget);
+	var id = $cur.parent().attr('data-teamid');
+	var questionId = $cur.attr('data-questionId');
+	var questionType = $cur.attr('data-questionType');
+	
+	var team = Teams.findOne({_id:id});
+	Meteor.call('checkoff', id, questionId);
 }
 
 Template.admin.events({

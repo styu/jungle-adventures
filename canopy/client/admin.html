@@ -10,43 +10,33 @@
 {{#if isReady}}
 
 <h2>Currently checking off for: <em>{{currentStatus}}</em></h2>
-
-<!-- duplicate this table for each 'team' or 'user' -->
+{{#each teams}}
 <table>
 	<tr>
 		<td colspan="4" class="teamname">
-			Flying Bobman
+    		{{teamName}}
 		</td>
 	</tr>
-	<tr>
-		<td class="done checkoffbtn">
-			Hello
+	<tr data-teamid = '{{_id}}'>
+	{{#each contest.html}}
+		{{#if isSet id 1}}
+		<td class="{{isCompleted time}} checkoffbtn" data-questionid='{{id}}' data-questiontype='html'>
+			{{title}}
 		</td>
-		<td class="done checkoffbtn">
-			Badge
-		</td>
-		<td class="notdone checkoffbtn">
-			Doc
-		</td>
-		<td class="notdone checkoffbtn">
-			Table
-		</td>
+		{{/if}}
+	{{/each}}
 	</tr>
-		<td class="notdone checkoffbtn">
-			Compass
+	<tr data-teamid = '{{_id}}'>
+	{{#each contest.html}}
+		{{#if isSet id 2}}
+		<td class="{{isCompleted time}} checkoffbtn" data-questionid='{{id}}' data-questiontype='html'>
+			{{title}}
 		</td>
-		<td class="notdone checkoffbtn">
-			Footprint
-		</td>
-		<td class="notdone checkoffbtn">
-			Photo
-		</td>
-		<td class="notdone checkoffbtn">
-			BONUS
-		</td>
+		{{/if}}
+	{{/each}}
 	</tr>
 </table>
-
+{{/each}}
 
 {{#if hasStarted}}
 <h2>The contest has started. We are currently on {{currentStatus}}. Click a button to advance to the next one</h2>

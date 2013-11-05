@@ -74,6 +74,19 @@
     });
 
     Meteor.methods({
+      checkoff: function(id, questionID) {
+      	if (_.isNull(Teams.findOne({_id:id}).contest.html[(questionID-1)].time)){
+      		//TODO fill out this time thing
+      		var val = "TIMEGOESHERELOL";
+      	} else {
+      		var val = null;
+      	}
+		Teams.update(
+			{_id: id, "contest.html.id": parseInt(questionID)}, 
+			{$set: 
+				{ "contest.html.$.time" : val}
+			});
+      },
       newTeam: function(info) {
         var ids = [];
         _.each(info['members'], function(member) {
@@ -106,7 +119,9 @@
         var questions = [];
         var timelengths = [3, 5, 5, 5, 5, 5, 7, 10];
         for (var i = 1; i <= 8; i++) {
-          questions.push({title: 'test' + i,
+          questions.push({id: i,
+          				  shorttitle: 'foo' + i,
+          				  title: 'test' + i,
                           time: undefined,
                           locked: true,
                           points: i * 5,
