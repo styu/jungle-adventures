@@ -3,6 +3,8 @@ console.log("client-canopy");
 
 var statusHandle = Meteor.subscribe('status');
 var userHandle = Meteor.subscribe('users');
+var teamHandle = Meteor.subscribe('teams');
+Teams = new Meteor.Collection('teams');
 Status = new Meteor.Collection('status');
 
 Template.login.greeting = function () {
@@ -18,7 +20,7 @@ Template.content.greeting = function() {
 }
 
 function timeLeft(date) {
-  var end = moment(date).add('minutes', 44);
+  var end = moment(date).add('minutes', 45);
   var now = moment(new Date()).unix();
   var timeleft = end.unix() - now;
   if (timeleft < 0) {
@@ -27,10 +29,14 @@ function timeLeft(date) {
   return timeleft;
 }
 
+var isReady = function() {
+  return statusHandle.ready() && teamHandle.ready();
+}
+
 Template.content.timer = function() {
   if (Meteor.user()) {
     var timeLeft = Status.findOne({title: "timeStatus"}).timeLeft;
-    var minutes = Math.round(timeLeft / 60) + ":";
+    var minutes = Math.floor(timeLeft / 60) + ":";
     var seconds = timeLeft % 60;
     if (seconds.toString().length < 2) {
       seconds = "0" + seconds;
@@ -58,9 +64,26 @@ Template.content.helpers({
                 Status.findOne({title: "questionStatus"}).status === 'sql';
     }
   },
-  isReady: function() {
-    return statusHandle.ready();
+  isReady: isReady,
+  teamname: function() {
+    if (Meteor.user()) {
+      return Meteor.user().profile.team;
+    }
   }
+});
+
+var currentQuestions = function() {
+  if (Meteor.user()) {
+    var teamname = Meteor.user().profile.team;
+    var team = Teams.findOne({teamName: teamname});
+    var status = Status.findOne({title: "questionStatus"}).status;
+    return team.contest[status];
+  }
+}
+
+Template.htmlnav.helpers({
+  currentQuestions: currentQuestions,
+  isReady: isReady
 });
 
 var test = function (event, template) {
@@ -113,12 +136,19 @@ Template.admin.events({
       var newstatus = event.currentTarget.id;
       var status = Status.findOne({title: "questionStatus"});
       var date = new Date();
+      if (newstatus === 'none') {
+        date = 0;
+      }
       Status.update({_id: status._id}, {$set:{'status': newstatus,
                                    'timestart': date}});
       //Session.set("timer", timeLeft(date));
       status = Status.findOne({title: "timeStatus"});
+      var timer = 0;
+      if (newstatus !== 'none') {
+        timer = timeLeft(date);
+      }
       Status.update({_id: status._id},
-                    {$set:{'started': true, 'timeLeft':timeLeft(date)}});
+                    {$set:{'started': true, 'timeLeft':timer}});
       console.log(Session.get("timer"));
     }
   },

@@ -1,24 +1,22 @@
 <template name='htmlnav'>
   <h1>Chapter 1</h1>
   <h2>HTML/CSS</h2>
+  {{#if isReady}}
   <ul>
-    <li class='question' id='html1'>
-      <div class="title">Hello, world</div>
-      <div class="desc">10 points - 7 minutes</div>
-    </li>
-    <li class='question' id='html2'>
-      <div class="title">Badges and Badgers</div>
-      <div class="desc">15 points - 7 minutes</div>
-    </li>
-    <li class="completed question" id='html3'>
-      <div class="title">The CSS File Report</div>
-      <div class="desc">25 points - 10 minutes</div>
-    </li>
-    <li class="locked question" id='html4'>
-      <div class="title">Best Compass</div>
-      <div class="desc">25 points - 12 minutes</div>
-    </li>
+    {{#each currentQuestions}}
+      <li class='question
+        {{#if locked}}
+        locked
+        {{/if}}
+      ' id='{{file}}'>
+        <div class='title'>{{title}}</div>
+        <div class='desc'>{{points}} - {{length}} minutes</div>
+      </li>
+    {{/each}}
   </ul>
+  {{else}}
+  Loading...
+  {{/if}}
   <div class="top-logo">
     <img src="images/leafsmall.png" />
   </div>

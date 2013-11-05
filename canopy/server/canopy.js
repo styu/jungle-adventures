@@ -84,7 +84,7 @@
           id = Accounts.createUser({
             email: member.email,
             password: password,
-            profile: { name: member.name }
+            profile: { name: member.name, team: info['teamname'] }
           });
 
           // email verification
@@ -103,22 +103,19 @@
           Meteor.users.update({_id: id}, {$set:{'emails.0.verified': true}});
         });
 
-        var questions = {};
-        var jsQuestions = {};
+        var questions = [];
         for (var i = 1; i <= 8; i++) {
-          questions[i] = {title: 'test' + i,
+          questions.push({title: 'test' + i,
                           time: undefined,
                           locked: false,
-                          points: i * 5};
-          jsQuestions[i] = {title: 'test' + i,
-                            time: undefined,
-                            locked: false,
-                            points: i * 5};
+                          points: i * 5,
+                          file: 'html' + i,
+                          timelength: i + 5});
         }
         Teams.insert({teamName: info['teamname'],
                       users: ids,
                       contest: {html: questions,
-                                js: jsQuestions,
+                                js: questions,
                                 sql: questions}});
       }
     })
@@ -146,6 +143,10 @@
       return Meteor.users.find();
     } // else display limited fields?
   });
+
+  Meteor.publish("teams", function () {
+    return Teams.find();
+  })
 
   function updateTimer() {
     var time = Status.findOne({title: "timeStatus"});
