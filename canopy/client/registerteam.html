@@ -1,4 +1,4 @@
-<template name="login">
+<template name="registerTeam">
 
   <!--
     username <input type="text" id="username" /><br />
@@ -7,16 +7,11 @@
     
       Huh. that is too cool. there is already an accounts-ui thingy
     -->
-    <div class="homepage-container">
+    <div class="registerteam-container">
       <h1 class="title"><span>Jungle Adventures </span><img src="images/leafevensmaller.png"/></h1>
 
       <div class="login-box">
-          <div class="greeting">{{greeting}}</div>
-          {{loginButtons}}<br/>
-          <div class="register-link"><a href="#">Register for a team</a></div>
-      </div>
-
-        <form action='' method='post' class="register-team-form">
+        <form action='' method='post'>
           <div>
             <label>Team name</label>
             <input class="style" type='text' id='teamname' />
@@ -47,6 +42,7 @@
           </div>
           <div><button class='newteam'>Create Team</button></div>
         </form>
+      </div>
 
     </div>
 </template>
