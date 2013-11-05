@@ -1,0 +1,27 @@
+body {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+	text-align: center;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+th, td {
+	padding: 4px;
+}
+
+tr:nth-child(even) {  
+	background-color:#eee; 
+}
+
+tr:nth-child(odd) { 
+	background-color:#fff; 
+}
+
+tr:hover {
+	background-color:#91dae2;
+}
