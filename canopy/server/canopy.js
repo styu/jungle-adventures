@@ -136,6 +136,30 @@
                       contest: {html: questions,
                                 js: questions,
                                 sql: questions}});
+      },
+      unlockHTML: function(id, question) {
+        var questionID = parseInt(question) + 1;
+        Teams.update({_id:id, "contest.html.file": "html" + questionID},
+                     {$set: {"contest.html.$.locked": false}}, function(error, docs) {
+                      console.log(error);
+                      console.log(docs);
+                     });
+      },
+      unlockJS: function(id, question) {
+        var questionID = parseInt(question) + 1;
+        Teams.update({_id:id, "contest.js.file": "js" + questionID},
+                     {$set: {"contest.js.$.locked": false}}, function(error, docs) {
+                      console.log(error);
+                      console.log(docs);
+                     });
+      },
+      unlockSQL: function(id, question) {
+        var questionID = parseInt(question) + 1;
+        Teams.update({_id:id, "contest.sql.file": "sql" + questionID},
+                     {$set: {"contest.sql.$.locked": false}}, function(error, docs) {
+                      console.log(error);
+                      console.log(docs);
+                     });
       }
     });
   });

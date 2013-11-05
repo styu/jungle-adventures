@@ -38,7 +38,7 @@ var timerDep = new Deps.Dependency;
 
 Template.content.timer = function() {
   if (Meteor.user()) {
-    if (timer=== 0) {
+    if (timer === 0) {
       var date = Status.findOne({title: "timeStatus"}).timeStart;
       var time = timeLeft(date);
       timer = time;
@@ -56,6 +56,18 @@ Template.content.timer = function() {
 function updateTimer() {
   if (timer - 1 >= 0) {
     timer = timer - 1;
+    var elapsed = Math.floor((45 * 60 - timer)/60);
+    var teamname = Meteor.user().profile.team;
+    var team = Teams.findOne({teamName: teamname});
+    var status = Status.findOne({title: "questionStatus"}).status;
+    var totalTime = 0;
+    _.each(team.contest[status], function(question, index) {
+      totalTime += question.timelength;
+      var nextQuestion = team.contest[status][index + 1];
+      if (totalTime <= elapsed  && nextQuestion.locked) {
+        Meteor.call("unlock" + status.toUpperCase(), team._id, index + 1);
+      }
+    });
   } else {
     timer = 0;
   }

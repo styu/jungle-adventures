@@ -6,7 +6,10 @@
     {{#each currentQuestions}}
       <li class='question 
         {{#if locked}}
-        locked
+        locked 
+        {{/if}}
+        {{#if time}}
+        completed
         {{/if}}
         'id='{{file}}'>
         <div class='title'>{{title}}</div>
