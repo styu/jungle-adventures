@@ -7,11 +7,6 @@ var teamHandle = Meteor.subscribe('teams');
 Teams = new Meteor.Collection('teams');
 Status = new Meteor.Collection('status');
 
-Template.login.rendered = function()
-{
-  Accounts._loginButtonsSession.set('dropdownVisible', true);
-};
-
 Template.login.greeting = function () {
   if (!Meteor.user()) {
     return "Curious...you don't seem to be logged in";
