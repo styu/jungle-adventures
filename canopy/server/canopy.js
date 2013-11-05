@@ -104,22 +104,25 @@
         });
 
         var questions = [];
+        var timelengths = [3, 5, 5, 5, 5, 5, 7, 10];
         for (var i = 1; i <= 8; i++) {
           questions.push({title: 'test' + i,
                           time: undefined,
-                          locked: false,
+                          locked: true,
                           points: i * 5,
                           file: 'html' + i,
-                          timelength: i + 5});
+                          timelength: timelengths[i-1]});
         }
+        // Unlock first 2 questions
+        questions[0]['locked'] = false;
+        questions[1]['locked'] = false;
         Teams.insert({teamName: info['teamname'],
                       users: ids,
                       contest: {html: questions,
                                 js: questions,
                                 sql: questions}});
       }
-    })
-
+    });
   });
 
   Status = new Meteor.Collection('status');
@@ -132,7 +135,7 @@
     if (_.isUndefined(Status.findOne({title: "timeStatus"}))) {
       Status.insert({title: "timeStatus",
                      started: false,
-                     timeLeft: 0});
+                     timeStart: 0});
     }
     return Status.find();
   });
@@ -146,23 +149,5 @@
 
   Meteor.publish("teams", function () {
     return Teams.find();
-  })
-
-  function updateTimer() {
-    var time = Status.findOne({title: "timeStatus"});
-    if (_.isUndefined(time)) {
-      Status.insert({title: "timeStatus",
-                     started: false,
-                     timeLeft: 0});
-    } else {
-      if (time.timeLeft - 1 >= 0) {
-        var timeLeft = time.timeLeft - 1;
-        Status.update({_id: time._id}, {$set:{'timeLeft':timeLeft}});
-      } else {
-        Status.update({_id: time._id}, {$set:{'started': true, 'timeLeft':0}});
-      }
-    }
-  }
-
-  Meteor.setInterval(updateTimer, 1000);
+  });
 }());

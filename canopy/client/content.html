@@ -2,9 +2,12 @@
 <div class="outercontainer">
   <div class="user-container">
     {{#if isReady}}
+
   	<div class="header">	
 	  <div class='timer'>
+      {{#isolate}}
 	    {{timer}}
+      {{/isolate}}
 	  </div>
 	  <div class='teaminfo'>
 	  	Team <em>{{teamname}}</em>
@@ -19,10 +22,6 @@
         Loading...
       {{/if}}
   	<div class="content">
-    
-   
-   
-   
   	</div>
     {{else}}
         Loading...

@@ -33,17 +33,36 @@ var isReady = function() {
   return statusHandle.ready() && teamHandle.ready();
 }
 
+var timer = 0;
+var timerDep = new Deps.Dependency;
+
 Template.content.timer = function() {
   if (Meteor.user()) {
-    var timeLeft = Status.findOne({title: "timeStatus"}).timeLeft;
-    var minutes = Math.floor(timeLeft / 60) + ":";
-    var seconds = timeLeft % 60;
+    if (timer=== 0) {
+      var date = Status.findOne({title: "timeStatus"}).timeStart;
+      var time = timeLeft(date);
+      timer = time;
+    }
+    timerDep.depend();
+    var minutes = Math.floor(timer / 60) + ":";
+    var seconds = timer % 60;
     if (seconds.toString().length < 2) {
       seconds = "0" + seconds;
     }
     return minutes + seconds;
   }
 }
+
+function updateTimer() {
+  if (timer - 1 >= 0) {
+    timer = timer - 1;
+  } else {
+    timer = 0;
+  }
+  timerDep.changed();
+}
+
+Meteor.setInterval(updateTimer, 1000);
 
 Template.content.helpers({
   isHTML: function() {
@@ -90,9 +109,7 @@ var test = function (event, template) {
     if (Meteor.user() && !event.currentTarget.classList.contains('locked')) {
       var template = event.currentTarget.id;
       console.log(template);
-      $('.content').html(Meteor.render(function() {
-        return Template[template]()
-      }));
+      $('.content').html(Template[template]());
     }
   }
 
@@ -141,15 +158,9 @@ Template.admin.events({
       }
       Status.update({_id: status._id}, {$set:{'status': newstatus,
                                    'timestart': date}});
-      //Session.set("timer", timeLeft(date));
       status = Status.findOne({title: "timeStatus"});
-      var timer = 0;
-      if (newstatus !== 'none') {
-        timer = timeLeft(date);
-      }
       Status.update({_id: status._id},
-                    {$set:{'started': true, 'timeLeft':timer}});
-      console.log(Session.get("timer"));
+                    {$set:{'started': true, 'timeStart':date}});
     }
   },
   'click .newteam': function (event, template) {
