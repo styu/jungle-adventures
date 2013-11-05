@@ -8,6 +8,7 @@
 
 		<h2>Login to the super secret 6.470 jungle server</h2>
 		<h2>(Challenge 2)</h2>
+		<p>Can you figure out the secret message protected by the 'root' user?</p>
 
 		<div id="result" style="margin-bottom: 20px"></div>
 
@@ -24,7 +25,7 @@
 			$("#login-form").submit(function(event) {
 				var username = $('#username').val();
 				var password = $('#password').val();
-				if (username == "root" && password == "230018") {
+				if (username == "root" && password == "231825") {
 					$('#result').text("Success! The magic phrase is 'monkey bananas'.");
 				} else {
 					$('#result').text("Whoops. Try again.");

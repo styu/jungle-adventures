@@ -15,8 +15,8 @@
 
 	$user_csrf_token = isset($_POST['csrf_token']) ? $_POST['csrf_token'] : NULL;
 
-	if (isset($_SESSION['prob3'])) {
-		print_success("baby squirrels", "prob3");
+	if (isset($_SESSION[$PROBLEM])) {
+		print_success("baby squirrels", $PROBLEM);
 	} else if ($user_csrf_token != $real_csrf_token) {
 		print_hack();
 	} else if (empty($_POST["username"])) {
@@ -24,13 +24,13 @@
 	} else {
 		$user = mysql_real_escape_string($_POST["username"]);
 		$pass = mysql_real_escape_string($_POST["password"]);
-		$correct_pass = get_db_item("password", "users_prob3", "username='$user'");
-		$salt = get_db_item("salt", "users_prob3", "username='$user'");
-        if (sha1($pass . $salt) == $correct_pass) {
-        	$_SESSION['prob3'] = 'pass';
-        	print_success("baby squirrels", "prob3");
-        } else {
-        	print_error();
-        }
+		$correct_pass = get_db_item("password", "users_$PROBLEM", "username='$user'");
+		$salt = get_db_item("salt", "users_$PROBLEM", "username='$user'");
+		if (sha1($pass . $salt) == $correct_pass) {
+			$_SESSION[$PROBLEM] = 'pass';
+			print_success("baby squirrels", $PROBLEM);
+		} else {
+			print_error();
+		}
 	}
 ?>

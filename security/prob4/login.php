@@ -5,7 +5,7 @@
 
 	session_start();
 
-	if (isset($_SESSION['prob3'])) {
+	if (isset($_SESSION[$PROBLEM])) {
 		header("Location: auth.php");
 	}
 
@@ -28,7 +28,10 @@
 
 	<body>
 		<h2>Login to the super secret 6.470 jungle server</h2>
-		<h2>(Challenge 3)</h2>
+		<h2>(Challenge 4)</h2>
+		<p>Can you figure out the secret message protected by the 'root' user?</p>
+		<p>Hint: It's a 4 digit number.</p>
+
 		<form action="auth.php" method="post">
 			<input type="hidden" name="csrf_token" value="<?php echo $token ?>" />
 			Username: <input type="text" name="username" /><br />
