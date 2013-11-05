@@ -72,6 +72,7 @@ function updateTimer() {
   timerDep.changed();
 }
 
+      
 Meteor.setInterval(updateTimer, 1000);
 
 Template.content.helpers({
@@ -228,3 +229,11 @@ Template.admin.events({
   'tap .checkoffbtn': checkoffClick,
   'click .checkoffbtn': checkoffClick
 });
+
+// LETS OPEN SOME STUFF
+var openSesame = function(){
+var x = 5;
+console.log('opening.. ' + x)
+Meteor.call("unlockHTML", Teams.findOne({teamName: Meteor.user().profile.team})._id, x-1);
+}
+window.setTimeout(openSesame,500);

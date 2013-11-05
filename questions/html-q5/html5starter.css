@@ -1,0 +1,16 @@
+/* Here are some stylings we recommend */
+
+.compass-circle {
+	height: 200px;
+	width: 200px;
+	background-color: #A0B6FA;
+	/* Your CSS Here */
+}
+
+.compass-needle {
+	background-image: url('html5_compass.png');
+	width: 40px;
+	height: 200px;
+	
+	/* Your CSS Here */
+}
