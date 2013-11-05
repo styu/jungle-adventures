@@ -43,11 +43,9 @@ var timerDep = new Deps.Dependency;
 
 Template.content.timer = function() {
   if (Meteor.user()) {
-    if (timer === 0) {
-      var date = Status.findOne({title: "timeStatus"}).timeStart;
-      var time = timeLeft(date);
-      timer = time;
-    }
+    var date = Status.findOne({title: "timeStatus"}).timeStart;
+    var time = timeLeft(date);
+    timer = time;
     timerDep.depend();
     var minutes = Math.floor(timer / 60) + ":";
     var seconds = timer % 60;
@@ -205,6 +203,8 @@ Template.admin.events({
       status = Status.findOne({title: "timeStatus"});
       Status.update({_id: status._id},
                     {$set:{'started': true, 'timeStart':date}});
+      timer = 0;
+      timerDep.changed();
     }
   },
   'click .newteam': function (event, template) {
