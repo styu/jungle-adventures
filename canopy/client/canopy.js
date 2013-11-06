@@ -18,12 +18,6 @@ Template.login.greeting = function () {
   }
 };
 
-Template.content.greeting = function() {
-  if (Meteor.user()) {
-    return "HELLO, " + Meteor.user().emails[0].address;
-  }
-}
-
 function timeLeft(date) {
   var end = moment(date).add('minutes', 45);
   var now = moment(new Date()).unix();
@@ -81,29 +75,28 @@ function updateTimer() {
 Meteor.setInterval(updateTimer, 1000);
 
 Template.content.helpers({
-  isHTML: function() {
-    if (Meteor.user()) {
-      return !_.isUndefined(Status.findOne({title: "questionStatus"})) &&
-                Status.findOne({title: "questionStatus"}).status === 'html';
-    }
-  },
-  isJS: function() {
-    if (Meteor.user()) {
-      return !_.isUndefined(Status.findOne({title: "questionStatus"})) &&
-                Status.findOne({title: "questionStatus"}).status === 'js';
-    }
-  },
-  isSQL: function() {
-    if (Meteor.user()) {
-      return !_.isUndefined(Status.findOne({title: "questionStatus"})) &&
-                Status.findOne({title: "questionStatus"}).status === 'sql';
-    }
-  },
   isReady: isReady,
   teamname: function() {
     if (Meteor.user()) {
       return Meteor.user().profile.team;
     }
+  },
+  score: function() {
+    var questions = ['html', 'js', 'sql'];
+    var solved = [];
+    var team = Teams.findOne({teamName: teamname});
+    _.each(questions, function(questionType) {
+      _.extend(solved, _.filter(team.contest[questionType],
+                           function(question) {
+                            return question.solved;
+                           }));
+    });
+    var points = _.map(solved, function(question) { return question.points; });
+    if (points.length == 0) {
+      return 0;
+    }
+    var sum = _.reduce(points, function(memo, points) {return memo + points; });
+    
   }
 });
 

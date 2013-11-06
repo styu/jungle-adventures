@@ -1,0 +1,26 @@
+<template name='nav'>
+  <h1>Chapter {{chapter}}</h1>
+  <h2>{{chapterTitle}}</h2>
+  {{#if isReady}}
+  <ul>
+    {{#each currentQuestions}}
+      <li class='question 
+        {{#if locked}}
+        locked 
+        {{/if}}
+        {{#if time}}
+        completed
+        {{/if}}
+        'id='{{file}}'>
+        <div class='title'>{{title}}</div>
+        <div class='desc'>{{points}} points - {{timelength}} minutes</div>
+      </li>
+    {{/each}}
+  </ul>
+  {{else}}
+  Loading...
+  {{/if}}
+  <div class="top-logo">
+    <img src="images/leafsmall.png" />
+  </div>
+</template>
