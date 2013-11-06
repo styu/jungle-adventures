@@ -135,13 +135,38 @@ body {
   .content p {
     margin-bottom: 20px;
     font-size: 16px;
-    line-height: 19px; }
+    line-height: 20px; }
   .content em {
     font-weight: 800; }
   .content .code {
     font-family: 'Courier New', Courier, serif;
     color: #943E00;
     font-weight: 600; }
+  .content .input, .content .output {
+    width: 300px;
+    float: left; }
+  .content textarea {
+    font-family: "Lucida Console", Monaco, monospace;
+    outline: none;
+    padding: 10px;
+    font-size: 13px;
+    width: 400px;
+    height: 200px;
+    margin-bottom: 10px; }
+  .content .js2output {
+    background-color: #FCF7E1;
+    padding: 10px;
+    width: 400px;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    color: #222; }
+  .content button {
+    margin-bottom: 10px;
+    display: block;
+    clear: both; }
+  .content .coding {
+    overflow: auto; }
   .content ul {
     position: relative;
     margin-bottom: 20px; }
@@ -216,20 +241,6 @@ body {
     display: block;
     font-weight: 700;
     font-size: 15px; }
-  .homepage-container button {
-    background-color: #217984;
-    border: none;
-    color: white;
-    font-family: Arial, Helvetica;
-    font-size: 14px;
-    text-shadow: 0px -1px 0px #374683;
-    padding: 9px 12px;
-    margin: 10px 0 0;
-    -moz-border-radius: 5px;
-    border-radius: 5px; }
-  .homepage-container button:hover {
-    background-color: #30909c;
-    cursor: pointer; }
   .homepage-container .content-container {
     margin-left: auto;
     margin-right: auto;
@@ -306,3 +317,19 @@ body {
     width: 350px; }
   .homepage-container .login-box .register-link {
     color: blue; }
+
+button {
+  background-color: #217984;
+  border: none;
+  color: white;
+  font-family: Arial, Helvetica;
+  font-size: 14px;
+  text-shadow: 0px -1px 0px #374683;
+  padding: 9px 12px;
+  margin: 10px 0 0;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
+
+button:hover {
+  background-color: #30909c;
+  cursor: pointer; }

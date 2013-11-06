@@ -138,8 +138,46 @@ var test = function (event, template) {
     }
   }
 
+var output = ""
+var js2  = function (event, template) {
+  var usercode = $('.js2textarea').val();
+  var error = "";
+  eval(usercode); // This is the Scariest Function Ever
+  console.log(typeof(pattern));
+  var checkEquals = function(a, b) {
+  console.log(a)
+  console.log(b)
+  	if (a.length != b.length) return false;
+  	for (i in a){
+  	  if (a[i] != b[i]) return false;
+  	}
+  	return true;
+  }
+  
+  if (typeof(pattern) == "function") {
+    // Tests
+  	if (!checkEquals(pattern(1,2,3), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])) error += "Failed Test1: pattern(1,2,3)<br />";
+  	if (!checkEquals(pattern(2,4), [2, 4, 6, 8, 10, 12, 14, 16, 18, 20] )) error += "Failed Test2: pattern(2,4)<br />";
+  	if (!checkEquals(pattern(1.5,3,6,12), [1.5, 3, 6, 12, 24, 48, 96, 192, 384, 768] )) error += "Failed Test3:  pattern(1.5,3,6,12)<br />";
+  	if (!checkEquals(pattern(0,0,0), [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] )) error += "Failed Test4: pattern(0,0,0)<br />";
+  	
+  } else {
+    error = "pattern is not a function";
+  }
+  
+  if (error == ''){
+    $('.js2output').html('PASS!');
+    //Meteor.call("unlockJS", Teams.findOne({teamName: Meteor.user().profile.team})._id, 1);
+    id =  Teams.findOne({teamName: Meteor.user().profile.team})._id
+    setTimeout(function(){Meteor.call('checkoffJS', id, 2)}, 1000);
+  } else {
+    $('.js2output').html(error);
+  }
+}
+
 Template.content.events({
-  'click .question': test
+  'click .question': test,
+  'click .js2submit': js2
 });
 
 Template.admin.teams = function(){

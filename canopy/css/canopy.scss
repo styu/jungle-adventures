@@ -182,7 +182,7 @@ body {
   p {
     margin-bottom: 20px;
     font-size: 16px;
-    line-height: 19px;
+    line-height: 20px;
     
   }
   
@@ -195,6 +195,42 @@ body {
   	color: #943E00;
   	font-weight: 600;
   }
+  
+  .input, .output {
+  	width: 300px;
+  	float: left;
+  }
+  
+  textarea {
+  	font-family: "Lucida Console", Monaco, monospace;
+  	outline: none;
+  	padding: 10px;
+  	font-size: 13px;
+  	width: 400px;
+  	height: 200px;
+  	margin-bottom: 10px;
+  }
+  
+  .js2output {
+    background-color: #FCF7E1;
+    padding: 10px;
+    width: 400px;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    color: #222;
+  }
+  
+  button {
+  	margin-bottom: 10px;
+  	display: block;
+  	clear: both;
+  }
+  
+  .coding {
+  	overflow: auto;
+  }
+  
   ul {
     position: relative;
     margin-bottom: 20px;
@@ -297,25 +333,6 @@ body {
       font-weight:700;
       font-size: 15px;
     }
-
-    button {
-        background-color: rgb(33, 121, 132);
-        border: none;
-        color: white;
-        font-family: Arial, Helvetica;
-        font-size: 14px;
-        text-shadow: 0px -1px 0px #374683;
-        padding: 9px 12px;
-        margin: 10px 0 0;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-    }
-
-    button:hover {
-        background-color: rgb(48, 144, 156);
-        cursor:pointer;
-    }
-
     .content-container {
         margin-left: auto;
         margin-right: auto;
@@ -418,4 +435,22 @@ body {
 
     }
 
+}
+
+button {
+    background-color: rgb(33, 121, 132);
+    border: none;
+    color: white;
+    font-family: Arial, Helvetica;
+    font-size: 14px;
+    text-shadow: 0px -1px 0px #374683;
+    padding: 9px 12px;
+    margin: 10px 0 0;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: rgb(48, 144, 156);
+    cursor:pointer;
 }
