@@ -138,6 +138,10 @@ body {
     line-height: 19px; }
   .content em {
     font-weight: 800; }
+  .content .code {
+    font-family: 'Courier New', Courier, serif;
+    color: #943E00;
+    font-weight: 600; }
   .content ul {
     position: relative;
     margin-bottom: 20px; }
