@@ -262,6 +262,7 @@ Template.login.events({
           }
         }
       }
+      console.log(info);
       info['beginner'] = $('#beginnerteam').is(':checked');
       if (info['members'].length > 0) {
         Meteor.call('newTeam', info);

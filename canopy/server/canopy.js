@@ -5,7 +5,7 @@
 
   Teams = new Meteor.Collection('teams');
 
-  var getQuestions = function() {
+  var getQuestions = function(isBeginner) {
     var questions = {'html': new Array(),
                      'js': new Array(),
                      'sql': new Array()};
@@ -19,7 +19,7 @@
                              shorttitle: shortTitle[i-1],
                              title: longTitle[i-1],
                               time: undefined,
-                              locked: true,
+                              locked: isBeginner,
                               points: pointValues[i-1],
                               file: 'html' + i,
                               timelength: timelengths[i-1],
@@ -40,7 +40,7 @@
                             shorttitle: shortTitle[i-1],
                             title: longTitle[i-1],
                             time: undefined,
-                            locked: true,
+                            locked: isBeginner,
                             points: pointValues[i-1],
                             file: 'js' + i,
                             timelength: timelengths[i-1],
@@ -61,7 +61,7 @@
                             shorttitle: shortTitle[i-1],
                             title: longTitle[i-1],
                             time: undefined,
-                            locked: true,
+                            locked: isBeginner,
                             points: pointValues[i-1],
                             file: 'sql' + i,
                             timelength: timelengths[i-1],
@@ -146,15 +146,15 @@
     // Prevent non-authorized users from creating new users
     //
 
-    Accounts.validateNewUser(function (user) {
-      var loggedInUser = Meteor.user();
+    // Accounts.validateNewUser(function (user) {
+    //   var loggedInUser = Meteor.user();
 
-      if (Roles.userIsInRole(loggedInUser, ['admin'])) {
-        return true;
-      }
+    //   // if (Roles.userIsInRole(loggedInUser, ['admin'])) {
+    //   //   return true;
+    //   // }
 
-      throw new Meteor.Error(403, "Not authorized to create new users");
-    });
+    //   throw new Meteor.Error(403, "Not authorized to create new users");
+    // });
 
     Meteor.methods({
       checkoffHTML: function(id, questionID) {
@@ -260,7 +260,7 @@
         });
       },
       newTeam: function(info) {
-        console.log('Creating new team: ' + info);
+        console.log('Creating new team: ' + info['teamname']);
         var ids = [];
         _.each(info['members'], function(member) {
           var id,
@@ -272,7 +272,6 @@
             password: password,
             profile: { name: member.name, team: info['teamname'] }
           });
-
           // email verification
           Email.send({
             to: member.email,
@@ -284,16 +283,14 @@
                   'Thanks,<br />' +
                   'Your Friendly 6.470 Monkey'
           });
-
           ids.push(id);
           Meteor.users.update({_id: id}, {$set:{'emails.0.verified': true}});
           
           var role = info['beginner'] ? ['beginner'] : ['advanced'];
           Roles.addUsersToRoles(id, role);
         });
-
         if (info['members'].length > 0) {
-          var questions = getQuestions();
+          var questions = getQuestions(info['beginner']);
           Teams.insert({teamName: info['teamname'],
                         users: ids,
                         contest: {html: questions['html'],
@@ -305,26 +302,17 @@
       unlockHTML: function(id, question) {
         var questionID = parseInt(question) + 1;
         Teams.update({_id:id, "contest.html.file": "html" + questionID},
-                     {$set: {"contest.html.$.locked": false}}, function(error, docs) {
-                      console.log(error);
-                      console.log(docs);
-                     });
+                     {$set: {"contest.html.$.locked": false}});
       },
       unlockJS: function(id, question) {
         var questionID = parseInt(question) + 1;
         Teams.update({_id:id, "contest.js.file": "js" + questionID},
-                     {$set: {"contest.js.$.locked": false}}, function(error, docs) {
-                      console.log(error);
-                      console.log(docs);
-                     });
+                     {$set: {"contest.js.$.locked": false}});
       },
       unlockSQL: function(id, question) {
         var questionID = parseInt(question) + 1;
         Teams.update({_id:id, "contest.sql.file": "sql" + questionID},
-                     {$set: {"contest.sql.$.locked": false}}, function(error, docs) {
-                      console.log(error);
-                      console.log(docs);
-                     });
+                     {$set: {"contest.sql.$.locked": false}});
       }
     });
   });
