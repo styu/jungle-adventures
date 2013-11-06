@@ -51,24 +51,26 @@ Template.content.timer = function() {
 }
 
 function updateTimer() {
-  if (timer - 1 >= 0) {
-    timer = timer - 1;
-    var elapsed = Math.floor((45 * 60 - timer)/60);
-    var teamname = Meteor.user().profile.team;
-    var team = Teams.findOne({teamName: teamname});
-    var status = Status.findOne({title: "questionStatus"}).status;
-    var totalTime = 0;
-    _.each(team.contest[status], function(question, index) {
-      totalTime += question.timelength;
-      var nextQuestion = team.contest[status][index + 1];
-      if (totalTime <= elapsed  && nextQuestion.locked) {
-        Meteor.call("unlock" + status.toUpperCase(), team._id, index + 1);
-      }
-    });
-  } else {
-    timer = 0;
+  if (Meteor.user()) {
+    if (timer - 1 >= 0) {
+      timer = timer - 1;
+      var elapsed = Math.floor((45 * 60 - timer)/60);
+      var teamname = Meteor.user().profile.team;
+      var team = Teams.findOne({teamName: teamname});
+      var status = Status.findOne({title: "questionStatus"}).status;
+      var totalTime = 0;
+      _.each(team.contest[status], function(question, index) {
+        totalTime += question.timelength;
+        var nextQuestion = team.contest[status][index + 1];
+        if (totalTime <= elapsed  && nextQuestion.locked) {
+          Meteor.call("unlock" + status.toUpperCase(), team._id, index + 1);
+        }
+      });
+    } else {
+      timer = 0;
+    }
+    timerDep.changed();
   }
-  timerDep.changed();
 }
 
       
@@ -264,6 +266,7 @@ Template.login.events({
       }
       console.log(info);
       info['beginner'] = $('#beginnerteam').is(':checked');
+      console.log(info['beginner']);
       if (info['members'].length > 0) {
         Meteor.call('newTeam', info);
       } else {
@@ -273,12 +276,3 @@ Template.login.events({
     event.preventDefault();
   }
 });
-
-
-// LETS OPEN SOME STUFF
-// var openSesame = function(){
-// var x = 5;
-// console.log('opening.. ' + x)
-// Meteor.call("unlockHTML", Teams.findOne({teamName: Meteor.user().profile.team})._id, x-1);
-// }
-// window.setTimeout(openSesame,500);

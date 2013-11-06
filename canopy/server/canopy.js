@@ -19,7 +19,7 @@
                              shorttitle: shortTitle[i-1],
                              title: longTitle[i-1],
                               time: undefined,
-                              locked: isBeginner,
+                              locked: !isBeginner,
                               points: pointValues[i-1],
                               file: 'html' + i,
                               timelength: timelengths[i-1],
@@ -40,7 +40,7 @@
                             shorttitle: shortTitle[i-1],
                             title: longTitle[i-1],
                             time: undefined,
-                            locked: isBeginner,
+                            locked: !isBeginner,
                             points: pointValues[i-1],
                             file: 'js' + i,
                             timelength: timelengths[i-1],
@@ -61,7 +61,7 @@
                             shorttitle: shortTitle[i-1],
                             title: longTitle[i-1],
                             time: undefined,
-                            locked: isBeginner,
+                            locked: !isBeginner,
                             points: pointValues[i-1],
                             file: 'sql' + i,
                             timelength: timelengths[i-1],
@@ -186,7 +186,7 @@
             Teams.update(
               {_id: id, "contest.html.id": parseInt(index + 3)}, 
               {$set: 
-                { "contest.html.$.locked" : true}
+                { "contest.html.$.locked" : true && !team.beginner}
             });
           }
         });
@@ -220,7 +220,7 @@
             Teams.update(
               {_id: id, "contest.js.id": parseInt(index + 3)}, 
               {$set: 
-                { "contest.js.$.locked" : true}
+                { "contest.js.$.locked" : true && !team.beginner}
             });
           }
         });
@@ -254,7 +254,7 @@
             Teams.update(
               {_id: id, "contest.sql.id": parseInt(index + 3)}, 
               {$set: 
-                { "contest.sql.$.locked" : true}
+                { "contest.sql.$.locked" : true && !team.beginner}
             });
           }
         });
