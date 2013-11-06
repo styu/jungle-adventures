@@ -116,9 +116,23 @@ var currentQuestions = function() {
   }
 }
 
-Template.htmlnav.helpers({
+Template.nav.helpers({
   currentQuestions: currentQuestions,
-  isReady: isReady
+  isReady: isReady,
+  chapter: function() {
+    if (Meteor.user()) {
+      var status = Status.findOne({title: "questionStatus"}).status;
+      return _.indexOf(['html', 'js', 'sql'], status) + 1;
+    }
+  },
+  chapterTitle: function() {
+    if (Meteor.user()) {
+      var status = Status.findOne({title: "questionStatus"}).status;
+      var index = _.indexOf(['html', 'js', 'sql'], status);
+      var titles = ['HTML/CSS', 'JS', 'SQL ATTACK'];
+      return titles[index];
+    }
+  }
 });
 
 var test = function (event, template) {
@@ -185,8 +199,7 @@ var checkoffClick = function(event, template) {
   var questionType = $cur.attr('data-questionType');
   
   var team = Teams.findOne({_id:id});
-  var status = Status.findOne({title: "questionStatus"}).status;
-  Meteor.call('checkoff' + status.toUpperCase(), id, questionId);
+  Meteor.call('checkoff' + questionType.toUpperCase(), id, questionId);
 }
 
 Template.admin.events({

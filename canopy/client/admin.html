@@ -17,6 +17,11 @@
         {{teamName}}
     </td>
   </tr>
+  <tr>
+    <td colspan="4" class="questiontype">
+        HTML/CSS
+    </td>
+  </tr>
   <tr data-teamid = '{{_id}}'>
   {{#each contest.html}}
     {{#if isSet id 1}}
@@ -30,6 +35,52 @@
   {{#each contest.html}}
     {{#if isSet id 2}}
     <td class="{{#if solved}}done{{/if}} checkoffbtn" data-questionid='{{id}}' data-questiontype='html'>
+      {{shorttitle}}
+    </td>
+    {{/if}}
+  {{/each}}
+  </tr>
+  <tr>
+    <td colspan="4" class="questiontype">
+        JS
+    </td>
+  </tr>
+  <tr data-teamid = '{{_id}}'>
+  {{#each contest.js}}
+    {{#if isSet id 1}}
+    <td class="{{#if solved}}done{{/if}} checkoffbtn" data-questionid='{{id}}' data-questiontype='js'>
+      {{shorttitle}}
+    </td>
+    {{/if}}
+  {{/each}}
+  </tr>
+  <tr data-teamid = '{{_id}}'>
+  {{#each contest.js}}
+    {{#if isSet id 2}}
+    <td class="{{#if solved}}done{{/if}} checkoffbtn" data-questionid='{{id}}' data-questiontype='js'>
+      {{shorttitle}}
+    </td>
+    {{/if}}
+  {{/each}}
+  </tr>
+  <tr>
+    <td colspan="4" class="questiontype">
+        SQL ATTACK
+    </td>
+  </tr>
+  <tr data-teamid = '{{_id}}'>
+  {{#each contest.sql}}
+    {{#if isSet id 1}}
+    <td class="{{#if solved}}done{{/if}} checkoffbtn" data-questionid='{{id}}' data-questiontype='sql'>
+      {{shorttitle}}
+    </td>
+    {{/if}}
+  {{/each}}
+  </tr>
+  <tr data-teamid = '{{_id}}'>
+  {{#each contest.sql}}
+    {{#if isSet id 2}}
+    <td class="{{#if solved}}done{{/if}} checkoffbtn" data-questionid='{{id}}' data-questiontype='sql'>
       {{shorttitle}}
     </td>
     {{/if}}

@@ -192,7 +192,9 @@
         });
       },
       checkoffJS: function(id, questionID) {
-        if (_.isNull(Teams.findOne({_id:id}).contest.js[(questionID-1)].time)){
+        var team = Teams.findOne({_id:id});
+        var question = team.contest.js[(questionID-1)];
+        if (_.isNull(question.time)){
           var val = new Date();
         } else {
           var val = null;
@@ -203,6 +205,9 @@
             { "contest.js.$.time" : val,
               "contest.js.$.solved" : !question.solved}
         });
+
+        var unlocked = [7, 17, 27, 41, 56];
+        team = Teams.findOne({_id:id});
         var totalpoints = getPoints(team, 'js');
         _.each(unlocked, function(points, index) {
           if ( points <= totalpoints) {
@@ -221,7 +226,9 @@
         });
       },
       checkoffSQL: function(id, questionID) {
-        if (_.isNull(Teams.findOne({_id:id}).contest.sql[(questionID-1)].time)){
+        var team = Teams.findOne({_id:id});
+        var question = team.contest.js[(questionID-1)];
+        if (_.isNull(question.time)){
           var val = new Date();
         } else {
           var val = null;
@@ -232,6 +239,9 @@
             { "contest.sql.$.time" : val,
               "contest.sql.$.solved" : !question.solved}
         });
+
+        var unlocked = [7, 17, 27, 41, 56];
+        team = Teams.findOne({_id:id});
         var totalpoints = getPoints(team, 'sql');
         _.each(unlocked, function(points, index) {
           if ( points <= totalpoints) {
