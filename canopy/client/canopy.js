@@ -181,6 +181,11 @@ Template.admin.helpers({
         return true
       }
     }
+  },
+  currentQuestions: function(id) {
+    var team = Teams.findOne({_id: id});
+    var status = Status.findOne({title: "questionStatus"}).status;
+    return team.contest[status];
   }
 });
 
