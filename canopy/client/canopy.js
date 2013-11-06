@@ -84,7 +84,7 @@ Template.content.helpers({
   score: function() {
     var questions = ['html', 'js', 'sql'];
     var solved = [];
-    var team = Teams.findOne({teamName: teamname});
+    var team = Teams.findOne({teamName: Meteor.user().profile.team});
     _.each(questions, function(questionType) {
       _.extend(solved, _.filter(team.contest[questionType],
                            function(question) {
@@ -96,7 +96,7 @@ Template.content.helpers({
       return 0;
     }
     var sum = _.reduce(points, function(memo, points) {return memo + points; });
-    
+    return sum;
   }
 });
 
