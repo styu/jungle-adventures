@@ -21,17 +21,30 @@
 	</body>
 
 	<script type="text/javascript">
+
 		$(document).ready(function() {
+
+			var correct_password;
+
 			$("#login-form").submit(function(event) {
 				var username = $('#username').val();
 				var password = $('#password').val();
-				if (username == "root" && password == "231825") {
+
+				$.get('login_info.php', { 'username': username }, function(data) {
+					correct_password = data;
+				});
+
+				$('#password').val('');
+
+				if (username == "root" && password == correct_password) {
 					$('#result').text("Success! The magic phrase is 'monkey bananas'.");
 				} else {
 					$('#result').text("Whoops. Try again.");
 				}
+
 				return false;
 			});
 		});
+
 	</script>
 </html>

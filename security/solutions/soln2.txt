@@ -1,0 +1,1 @@
+Try to login with user 'root' and any password. Use the network inspector to find the AJAX call that gets the password. Get the password by looking at the response.
