@@ -10,43 +10,48 @@
     <div class="homepage-container">
       <h1 class="title"><span>Jungle Adventures </span><img src="images/leafevensmaller.png"/></h1>
 
-      <div class="login-box">
-          <div class="greeting">{{greeting}}</div>
-          {{loginButtons}}<br/>
-          <div class="register-link"><a href="#">Register for a team</a></div>
-      </div>
+      <div class="content-container">
+        <div class="register-box">
+          <h3>Register Team</h3>
+          <p>Please register your team to receive your login information. </p>
+          <form action='' method='post' class="register-team-form">
+            <div>
+              <label>Team name</label>
+              <input class="style" type='text' id='teamname' />
+            </div>
+            <div>
+              <label>Team member 1</label>
+              <input type='text' id='member1name' />
+            </div>
+            <div>
+              <label>Email</label>
+              <input type='text' id='member1email' />
+            </div>
+            <div>
+              <label>Team member 2</label>
+              <input type='text' id='member2name' />
+            </div>
+            <div>
+              <label>Email</label>
+              <input type='text' id='member2email' />
+            </div>
+            <div>
+              <label>Team member 3</label>
+              <input type='text' id='member3name' />
+            </div>
+            <div>
+              <label>Email</label>
+              <input type='text' id='member3email' />
+            </div>
+            <button class='newteam'>Create Team</button>
+          </form>
+        </div>
 
-        <form action='' method='post' class="register-team-form">
-          <div>
-            <label>Team name</label>
-            <input class="style" type='text' id='teamname' />
-          </div>
-          <div>
-            <label>Team member 1</label>
-            <input type='text' id='member1name' />
-          </div>
-          <div>
-            <label>Email</label>
-            <input type='text' id='member1email' />
-          </div>
-          <div>
-            <label>Team member 2</label>
-            <input type='text' id='member2name' />
-          </div>
-          <div>
-            <label>Email</label>
-            <input type='text' id='member2email' />
-          </div>
-          <div>
-            <label>Team member 3</label>
-            <input type='text' id='member3name' />
-          </div>
-          <div>
-            <label>Email</label>
-            <input type='text' id='member3email' />
-          </div>
-          <div><button class='newteam'>Create Team</button></div>
-        </form>
+        <div class="login-box">
+            <h3>Sign In</h3>
+            {{loginButtons}}<br/>
+        </div>
+      </div>
 
     </div>
 </template>

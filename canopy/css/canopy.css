@@ -198,13 +198,12 @@ body {
   font-weight: 200;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
+  margin-top: 50px;
   width: 960px; }
   .homepage-container .title {
     color: #4d3c32;
     font-family: 'Lilita One', cursive;
     font-size: 40px;
-    margin-top: 100px;
     margin-bottom: 10px;
     text-align: center; }
     .homepage-container .title img {
@@ -213,18 +212,6 @@ body {
     display: block;
     font-weight: 700;
     font-size: 15px; }
-  .homepage-container input {
-    border: 1px solid #ccc;
-    font-size: 14px;
-    padding: 6px 12px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-border-radius: 5px; }
-  .homepage-container input:focus {
-    border: 2px solid #66afe9;
-    outline-width: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); }
   .homepage-container button {
     background-color: #217984;
     border: none;
@@ -239,50 +226,79 @@ body {
   .homepage-container button:hover {
     background-color: #30909c;
     cursor: pointer; }
-  .homepage-container .login-box {
+  .homepage-container .content-container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    width: 794px; }
+  .homepage-container .register-box, .homepage-container .login-box {
     background-color: #f7f6f3;
-    left: 50%;
-    position: absolute;
-    margin-left: -270px;
-    padding: 40px 20px;
-    width: 500px;
-    -moz-border-radius: 10px;
+    color: #494949;
+    display: inline-block;
+    padding: 40px 52px;
+    vertical-align: top;
+    width: 276px;
     border-radius: 10px;
+    -moz-border-radius: 10px;
     -webkit-border-radius: 10px; }
-    .homepage-container .login-box input {
-      width: 250px; }
-    .homepage-container .login-box .login-close-text {
-      display: none; }
-    .homepage-container .login-box .login-buttons-dropdown-align-left {
-      margin-left: auto;
-      margin-right: auto;
-      width: 276px; }
-    .homepage-container .login-box #login-buttons-password {
-      background-color: #217984;
-      border: none;
-      color: white;
-      font-family: Arial, Helvetica;
+    .homepage-container .register-box input, .homepage-container .login-box input {
+      border: 1px solid #ccc;
       font-size: 14px;
-      text-shadow: 0px -1px 0px #374683;
-      padding: 9px 12px;
-      margin: 10px 0 0;
+      padding: 6px 12px;
+      margin-bottom: 10px;
+      width: 250px;
       -moz-border-radius: 5px;
       border-radius: 5px;
-      display: inline-block; }
-    .homepage-container .login-box #login-buttons-password:hover {
-      background-color: #30909c;
-      cursor: pointer; }
-    .homepage-container .login-box #signup-link {
-      display: none; }
-    .homepage-container .login-box #forgot-password-link {
-      display: none; }
-    .homepage-container .login-box .signup-link:hover {
-      cursor: pointer;
-      color: #66afe9; }
-    .homepage-container .login-box .greeting, .homepage-container .login-box .register-link {
-      margin-left: auto;
-      margin-right: auto;
-      padding-bottom: 10px;
-      width: 350px; }
-    .homepage-container .login-box .register-link {
-      color: blue; }
+      -webkit-border-radius: 5px; }
+    .homepage-container .register-box input:focus, .homepage-container .login-box input:focus {
+      border: 2px solid #66afe9;
+      outline-width: 0;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6); }
+    .homepage-container .register-box h3, .homepage-container .login-box h3 {
+      color: #000;
+      font-weight: 700;
+      margin-bottom: 15px; }
+    .homepage-container .register-box p, .homepage-container .login-box p {
+      font-size: 14px;
+      line-height: 1.2em;
+      margin-bottom: 10px; }
+  .homepage-container .register-box {
+    margin-right: 29px; }
+  .homepage-container .login-box .login-link-text {
+    display: none; }
+  .homepage-container .login-box .login-close-text {
+    display: none; }
+  .homepage-container .login-box .login-buttons-dropdown-align-left {
+    margin-left: auto;
+    margin-right: auto;
+    width: 276px; }
+  .homepage-container .login-box #login-buttons-password {
+    background-color: #217984;
+    border: none;
+    color: white;
+    font-family: Arial, Helvetica;
+    font-size: 14px;
+    text-shadow: 0px -1px 0px #374683;
+    padding: 9px 12px;
+    margin: 10px 0 0;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block; }
+  .homepage-container .login-box #login-buttons-password:hover {
+    background-color: #30909c;
+    cursor: pointer; }
+  .homepage-container .login-box #signup-link {
+    display: none; }
+  .homepage-container .login-box #forgot-password-link {
+    display: none; }
+  .homepage-container .login-box .signup-link:hover {
+    cursor: pointer;
+    color: #66afe9; }
+  .homepage-container .login-box .greeting, .homepage-container .login-box .register-link {
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 10px;
+    width: 350px; }
+  .homepage-container .login-box .register-link {
+    color: blue; }

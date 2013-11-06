@@ -237,3 +237,30 @@ console.log('opening.. ' + x)
 Meteor.call("unlockHTML", Teams.findOne({teamName: Meteor.user().profile.team})._id, x-1);
 }
 window.setTimeout(openSesame,500);
+
+Template.login.events({
+  'click .newteam': function (event, template) {
+    console.log("started");
+    var info = {};
+    if ($('#teamname').val() !== '') {
+      info['teamname'] = $('#teamname').val();
+      info['members'] = [];
+      for (var i = 1; i <= 3; i++) {
+        if ($('#member' + i + 'name').val() !== '' && $('#member' + i + 'email').val() !== '') {
+          var email = $('#member' + i + 'email').val();
+          if (_.isUndefined(Meteor.users.findOne({'emails.address': email}))) {
+            info['members'].push({email: email,
+                                    name: $('#member' + i + 'name').val()});
+          }
+        }
+      }
+      console.log(info);
+      if (info['members'].length > 0) {
+        Meteor.call('newTeam', info);
+      } else {
+        console.log('error in form');
+      }
+    }
+    event.preventDefault();
+  }
+});

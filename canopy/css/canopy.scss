@@ -16,7 +16,7 @@ body {
   position: relative;
   overflow: auto;
   -webkit-box-shadow:  0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-    box-shadow:  0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow:  0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 } 
 
 .header {
@@ -265,129 +265,153 @@ body {
 }
 
 .homepage-container {
-  font-family: sans-serif;
-  font-weight: 200;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
-  width: 960px;
+    font-family: sans-serif;
+    font-weight: 200;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 960px;
 
-  .title {
-    color: rgb(77, 60, 50);
-    font-family:'Lilita One', cursive; 
-    font-size: 40px;
-    margin-top: 100px;
-    margin-bottom: 10px;
-    text-align: center;
+    .title {
+        color: rgb(77, 60, 50);
+        font-family:'Lilita One', cursive; 
+        font-size: 40px;
+        margin-bottom: 10px;
+        text-align: center;
 
-    span {
+        span {
+        }
+
+        img {
+            vertical-align:text-top;
+        }
+    }   
+
+    label {
+      display: block;
+      font-weight:700;
+      font-size: 15px;
     }
 
-    img {
-      vertical-align:text-top;
-    }
-  }  
-
-  label {
-    display: block;
-    font-weight:700;
-    font-size: 15px;
-  }
-
-  input {
-    border: 1px solid #ccc;
-    font-size: 14px;
-    padding: 6px 12px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-  }
-
-  input:focus {
-    border: 2px solid #66afe9;
-      outline-width: 0;
-      -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
-    box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
-  }
-
-  button {
-    background-color: rgb(33, 121, 132);
-    border: none;
-    color: white;
-    font-family: Arial, Helvetica;
-    font-size: 14px;
-    text-shadow: 0px -1px 0px #374683;
-    padding: 9px 12px;
-    margin: 10px 0 0;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-  }
-
-  button:hover {
-    background-color: rgb(48, 144, 156);
-    cursor:pointer;
-  }
-
-  .login-box {
-    background-color: rgb(247, 246, 243);
-    left: 50%;
-    position:absolute;
-    margin-left:-270px;
-    padding: 40px 20px;
-    width: 500px;
-      -moz-border-radius: 10px;
-      border-radius: 10px;
-      -webkit-border-radius: 10px;
-
-      input {
-        width: 250px;
-      }
-
-      //.login-link-text {display: none;}
-      .login-close-text {display: none;}
-      .login-buttons-dropdown-align-left {
-        margin-left: auto;
-        margin-right: auto;
-        width: 276px;
-      }
-      #login-buttons-password {
+    button {
         background-color: rgb(33, 121, 132);
-      border: none;
-      color: white;
-      font-family: Arial, Helvetica;
-      font-size: 14px;
-      text-shadow: 0px -1px 0px #374683;
-      padding: 9px 12px;
-      margin: 10px 0 0;
-      -moz-border-radius: 5px;
-      border-radius: 5px;
-      display:inline-block;
-      }
+        border: none;
+        color: white;
+        font-family: Arial, Helvetica;
+        font-size: 14px;
+        text-shadow: 0px -1px 0px #374683;
+        padding: 9px 12px;
+        margin: 10px 0 0;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
 
-      #login-buttons-password:hover {
+    button:hover {
         background-color: rgb(48, 144, 156);
-      cursor:pointer;
-      }
-
-      #signup-link { display: none;}
-      #forgot-password-link { display: none; }
-
-      .signup-link:hover {
         cursor:pointer;
-        color: #66afe9;
-      }
+    }
 
-      .greeting, .register-link {
+    .content-container {
         margin-left: auto;
         margin-right: auto;
-        padding-bottom: 10px;
-        width: 350px;
-      }
+        margin-top: 30px;
+        width: 794px;
+    }
 
-      .register-link {
-        color:blue;
-      }
+    .register-box, .login-box {
+        background-color: rgb(247, 246, 243);
+        color: rgb(73, 73, 73);
+        display: inline-block;
+        padding: 40px 52px;
+        vertical-align: top;
+        width: 276px;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
 
-  }
+        input {
+          border: 1px solid #ccc;
+          font-size: 14px;
+          padding: 6px 12px;
+          margin-bottom:10px;
+          width: 250px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
+          -webkit-border-radius: 5px;
+        }
+
+        input:focus {
+          border: 2px solid #66afe9;
+          outline-width: 0;
+          -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
+          box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
+        }
+
+        h3 {
+            color: #000;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.2em;
+            margin-bottom: 10px;
+        }
+
+    }
+
+    .register-box {
+        margin-right:29px;
+    }
+
+    .login-box {
+
+        .login-link-text {display: none;}
+        .login-close-text {display: none;}
+        .login-buttons-dropdown-align-left {
+            margin-left: auto;
+            margin-right: auto;
+            width: 276px;
+        }
+        #login-buttons-password {
+            background-color: rgb(33, 121, 132);
+            border: none;
+            color: white;
+            font-family: Arial, Helvetica;
+            font-size: 14px;
+            text-shadow: 0px -1px 0px #374683;
+            padding: 9px 12px;
+            margin: 10px 0 0;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            display:inline-block;
+        }
+
+        #login-buttons-password:hover {
+            background-color: rgb(48, 144, 156);
+            cursor:pointer;
+        }
+
+        #signup-link { display: none;}
+        #forgot-password-link { display: none; }
+
+        .signup-link:hover {
+            cursor:pointer;
+            color: #66afe9;
+        }
+
+        .greeting, .register-link {
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 10px;
+            width: 350px;
+        }
+
+        .register-link {
+            color:blue;
+        }
+
+    }
 
 }
