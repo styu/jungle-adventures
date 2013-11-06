@@ -235,14 +235,6 @@ Template.admin.events({
   'click .checkoffbtn': checkoffClick
 });
 
-// LETS OPEN SOME STUFF
-// var openSesame = function(){
-// var x = 5;
-// console.log('opening.. ' + x)
-// Meteor.call("unlockHTML", Teams.findOne({teamName: Meteor.user().profile.team})._id, x-1);
-// }
-// window.setTimeout(openSesame,500);
-
 Template.login.events({
   'click .newteam': function (event, template) {
     console.log('Creating new team');
@@ -269,3 +261,12 @@ Template.login.events({
     event.preventDefault();
   }
 });
+
+
+// LETS OPEN SOME STUFF
+// var openSesame = function(){
+// var x = 5;
+// console.log('opening.. ' + x)
+// Meteor.call("unlockHTML", Teams.findOne({teamName: Meteor.user().profile.team})._id, x-1);
+// }
+// window.setTimeout(openSesame,500);

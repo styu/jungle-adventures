@@ -1,0 +1,42 @@
+html {
+	width: 100%;
+	height: 100%;
+}
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-image:url('trees-nodomephant.png');
+}
+@media (min-width: 500px) , (max-width: 449px) {
+	.not-here {
+		color: #fff;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+	}
+	.is-here {
+		display: none;
+	}
+}
+@media (max-width: 499px) and (min-width: 450px) {
+	.is-here {
+		color: #fff;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+	}
+	.not-here {
+		display: none;
+	}
+}
+
+h1 {
+	font-family: sans-serif;
+	font-weight: 400;
+	text-align: center;
+	padding: 30px;
+	font-size: 24px;
+	margin: 0;
+}
