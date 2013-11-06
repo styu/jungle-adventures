@@ -1,4 +1,4 @@
-;(function () {
+(function () {
 
   process.env.MAIL_URL = "smtp://6.470monkeys:6470m0nk3y@smtp.googlemail.com:465"
   "use strict";
@@ -195,4 +195,4 @@
   Meteor.publish("teams", function () {
     return Teams.find();
   });
-}());
+})();

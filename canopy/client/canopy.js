@@ -7,6 +7,11 @@ var teamHandle = Meteor.subscribe('teams');
 Teams = new Meteor.Collection('teams');
 Status = new Meteor.Collection('status');
 
+Template.login.rendered = function()
+{
+    Accounts._loginButtonsSession.set('dropdownVisible', true);
+};
+
 Template.login.greeting = function () {
   if (!Meteor.user()) {
     return "Curious...you don't seem to be logged in";
@@ -230,7 +235,7 @@ Template.admin.events({
   'click .checkoffbtn': checkoffClick
 });
 
-// LETS OPEN SOME STUFF
+LETS OPEN SOME STUFF
 var openSesame = function(){
 var x = 5;
 console.log('opening.. ' + x)
@@ -240,7 +245,6 @@ window.setTimeout(openSesame,500);
 
 Template.login.events({
   'click .newteam': function (event, template) {
-    console.log("started");
     var info = {};
     if ($('#teamname').val() !== '') {
       info['teamname'] = $('#teamname').val();
