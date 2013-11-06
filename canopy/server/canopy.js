@@ -75,17 +75,16 @@
 
     Meteor.methods({
       checkoff: function(id, questionID) {
-      	if (_.isNull(Teams.findOne({_id:id}).contest.html[(questionID-1)].time)){
-      		//TODO fill out this time thing
-      		var val = new Date();
-      	} else {
-      		var val = null;
-      	}
-		Teams.update(
-			{_id: id, "contest.html.id": parseInt(questionID)}, 
-			{$set: 
-				{ "contest.html.$.time" : val}
-			});
+        if (_.isNull(Teams.findOne({_id:id}).contest.html[(questionID-1)].time)){
+          var val = new Date();
+        } else {
+          var val = null;
+        }
+    Teams.update(
+      {_id: id, "contest.html.id": parseInt(questionID)}, 
+      {$set: 
+        { "contest.html.$.time" : val}
+      });
       },
       newTeam: function(info) {
         var ids = [];
@@ -124,8 +123,8 @@
         var timelengths = [5, 5,  5,  5,  5,  5,  15, 0];
         for (var i = 1; i <= 8 ; i++) {
           questions.push({id: i,
-          				  shorttitle: shortTitle[i-1],
-          				  title: longTitle[i-1],
+                    shorttitle: shortTitle[i-1],
+                    title: longTitle[i-1],
                           time: undefined,
                           locked: true,
                           points: pointValues[i-1],

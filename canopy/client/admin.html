@@ -12,29 +12,29 @@
 <h2>Currently checking off for: <em>{{currentStatus}}</em></h2>
 {{#each teams}}
 <table>
-	<tr>
-		<td colspan="4" class="teamname">
-    		{{teamName}}
-		</td>
-	</tr>
-	<tr data-teamid = '{{_id}}'>
-	{{#each contest.html}}
-		{{#if isSet id 1}}
-		<td class="{{isCompleted time}} checkoffbtn" data-questionid='{{id}}' data-questiontype='html'>
-			{{shorttitle}}
-		</td>
-		{{/if}}
-	{{/each}}
-	</tr>
-	<tr data-teamid = '{{_id}}'>
-	{{#each contest.html}}
-		{{#if isSet id 2}}
-		<td class="{{isCompleted time}} checkoffbtn" data-questionid='{{id}}' data-questiontype='html'>
-			{{shorttitle}}
-		</td>
-		{{/if}}
-	{{/each}}
-	</tr>
+  <tr>
+    <td colspan="4" class="teamname">
+        {{teamName}}
+    </td>
+  </tr>
+  <tr data-teamid = '{{_id}}'>
+  {{#each contest.html}}
+    {{#if isSet id 1}}
+    <td class="{{isCompleted time}} checkoffbtn" data-questionid='{{id}}' data-questiontype='html'>
+      {{shorttitle}}
+    </td>
+    {{/if}}
+  {{/each}}
+  </tr>
+  <tr data-teamid = '{{_id}}'>
+  {{#each contest.html}}
+    {{#if isSet id 2}}
+    <td class="{{isCompleted time}} checkoffbtn" data-questionid='{{id}}' data-questiontype='html'>
+      {{shorttitle}}
+    </td>
+    {{/if}}
+  {{/each}}
+  </tr>
 </table>
 {{/each}}
 

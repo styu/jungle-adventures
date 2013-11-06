@@ -1,393 +1,393 @@
 body {
-	height: 100%;
-	background-color: rgb(230, 228, 219);
+  height: 100%;
+  background-color: rgb(230, 228, 219);
 }
 
 .outercontainer {
-	font-family: sans-serif;
-	font-weight: 300;
-	padding: 20px;
-	height: 100%;
-	min-width: 960px;
+  font-family: sans-serif;
+  font-weight: 300;
+  padding: 20px;
+  height: 100%;
+  min-width: 960px;
 }
 
 .user-container {
-	background-color: #fff;
-	position: relative;
-	overflow: auto;
-	-webkit-box-shadow:  0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  position: relative;
+  overflow: auto;
+  -webkit-box-shadow:  0px 0px 10px 0px rgba(0, 0, 0, 0.1);
     box-shadow:  0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 } 
 
 .header {
-	display: block;
-	
-	.timer {
-		float: left;
-		width: 180px;
-		padding: 10px 20px;
-		background-color: #FF9500;
-		color: #fff;
-		font-size: 20px;
-		text-align: center;
-	}
-	.teaminfo {
-		padding: 10px 20px;
-		margin-left: 210px;
-		font-size: 20px;
-		background-color: #F3F7F2;
-		
-		em {
-			font-weight: 600;
-		}
-		
-		.score {
-			font-size: 14px;
-			line-height: 20px;
-			vertical-align: center;
-			float: right;
-		}
-	}
-	.login-buttons-dropdown-align-right {
-		display: inline-block;
-	}
-	.accounts-dialog, .login-button, .login-link-text {
-		display: inline;
-	}
-	.login-button:hover, .login-link-text:hover, .login-close-text:hover {
-		cursor: pointer;
-		opacity: 0.8;
-	}
-	.login-close-text {
-		font-size: 10px;
-		line-height: 20px;
-		vertical-align: center;
-		opacity: 0.6;
-		font-weight: 600;
-		&:before {
-			content:"["
-		}
-		&:after {
-			content:"]"
-		}
-	}
-	
-	.login-close-text-clear {
-		display: none;
-	}
+  display: block;
+  
+  .timer {
+    float: left;
+    width: 180px;
+    padding: 10px 20px;
+    background-color: #FF9500;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+  }
+  .teaminfo {
+    padding: 10px 20px;
+    margin-left: 210px;
+    font-size: 20px;
+    background-color: #F3F7F2;
+    
+    em {
+      font-weight: 600;
+    }
+    
+    .score {
+      font-size: 14px;
+      line-height: 20px;
+      vertical-align: center;
+      float: right;
+    }
+  }
+  .login-buttons-dropdown-align-right {
+    display: inline-block;
+  }
+  .accounts-dialog, .login-button, .login-link-text {
+    display: inline;
+  }
+  .login-button:hover, .login-link-text:hover, .login-close-text:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  .login-close-text {
+    font-size: 10px;
+    line-height: 20px;
+    vertical-align: center;
+    opacity: 0.6;
+    font-weight: 600;
+    &:before {
+      content:"["
+    }
+    &:after {
+      content:"]"
+    }
+  }
+  
+  .login-close-text-clear {
+    display: none;
+  }
 }
 
 .leftbar {
-	clear: both;
-	width: 180px;
-	float: left;
-	display: block;
-	padding: 20px;
-	
-	.top-logo {
-		text-align: center;
-		margin: 30px 0;
-	}
-	
-	h1 {
-		opacity: 0.3;
-		font-size: 14px;
-		margin-bottom: 5px;
-	}
-	h2 {
-		font-size: 18px;
-		font-weight: 600;
-		color: #006470;
-		margin-bottom: 20px;
-	}
-	ul {
-		li {
-			margin-bottom: 10px;
-			padding: 5px 10px 5px;
-			border-left: 3px solid #FFA95E;
-			transition:background-color 0.2s;
-			-webkit-transition:background-color 0.2s; /* Safari */		
-			
-			&:hover {
-				background-color: #f0f0f0;
-				cursor: pointer;
-			}
-			
-			&.completed {
-				border-left-color: #006470;
-				
-				.title:before {
-					color: red;
-					margin-right: 8px;
-					content: url('http://www.tqualizer.com/skin1/images/check.png');
-				}
-				
-			}
-			
-			&.locked {
-				border-left-color: #ccc;
-				
-				.title {
-					color: #aaa;
-				}
-				.title:before
-				{
-					content: url('http://www.k-state.edu/its/images/lock_black.png');
-					margin-right: 7px;
-					opacity: 0.3;
-				}
-				&:hover {
-					background-color: inherit;
-				}
-			}
-		}
-	}
-	.title {
-		margin-bottom: 3px;
-		font-weight: 400;
-	}
-	.desc {
-		font-size: 13px;
-		opacity: 0.5;
-	}
-	
+  clear: both;
+  width: 180px;
+  float: left;
+  display: block;
+  padding: 20px;
+  
+  .top-logo {
+    text-align: center;
+    margin: 30px 0;
+  }
+  
+  h1 {
+    opacity: 0.3;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #006470;
+    margin-bottom: 20px;
+  }
+  ul {
+    li {
+      margin-bottom: 10px;
+      padding: 5px 10px 5px;
+      border-left: 3px solid #FFA95E;
+      transition:background-color 0.2s;
+      -webkit-transition:background-color 0.2s; /* Safari */    
+      
+      &:hover {
+        background-color: #f0f0f0;
+        cursor: pointer;
+      }
+      
+      &.completed {
+        border-left-color: #006470;
+        
+        .title:before {
+          color: red;
+          margin-right: 8px;
+          content: url('http://www.tqualizer.com/skin1/images/check.png');
+        }
+        
+      }
+      
+      &.locked {
+        border-left-color: #ccc;
+        
+        .title {
+          color: #aaa;
+        }
+        .title:before
+        {
+          content: url('http://www.k-state.edu/its/images/lock_black.png');
+          margin-right: 7px;
+          opacity: 0.3;
+        }
+        &:hover {
+          background-color: inherit;
+        }
+      }
+    }
+  }
+  .title {
+    margin-bottom: 3px;
+    font-weight: 400;
+  }
+  .desc {
+    font-size: 13px;
+    opacity: 0.5;
+  }
+  
 }
 
 .content {
-	padding: 20px;
-	margin-left: 220px;
-	height: 100%;
-	
-	.downloadable {
-		text-decoration: none;
-		color: #385BC7;
-		padding: 10px 10px 10px 34px;
-		border: 1px solid #ccc;
-		width: 300px;
-		margin-top: 5px;
-		display: block;
-		background-image: url('/images/file.png');
-		background-position-y: center;
-		background-position-x: 8px;
-		background-repeat: no-repeat;
-		opacity: 0.8;
-		transition:border-color 0.2s;
-		-webkit-transition:border-color 0.2s; /* Safari */		
-		&:hover {
-			border-color: #444;
-			cursor: pointer;
-		}
-	}
-	
-	p {
-		margin-bottom: 20px;
-		font-size: 16px;
-		line-height: 19px;
-		
-	}
-	
-	em {
-		font-weight: 800;
-	}
-	
-	ul {
-		position: relative;
-		margin-bottom: 20px;
-		li:before{ content:"-"; position:relative; left:-5px;}
-		li {
-			margin: 0 0 5px 10px; 
-		}
-	}
-	
-	h1 {
-		font-size: 36px;
-		opacity: 0.3;
-		margin-bottom: 10px;
-	}
-	h2 {
-		color: #006470;
-		font-weight: 400;
-		font-size: 18px;
-		margin-bottom: 8px;
-	}
+  padding: 20px;
+  margin-left: 220px;
+  height: 100%;
+  
+  .downloadable {
+    text-decoration: none;
+    color: #385BC7;
+    padding: 10px 10px 10px 34px;
+    border: 1px solid #ccc;
+    width: 300px;
+    margin-top: 5px;
+    display: block;
+    background-image: url('/images/file.png');
+    background-position-y: center;
+    background-position-x: 8px;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    transition:border-color 0.2s;
+    -webkit-transition:border-color 0.2s; /* Safari */    
+    &:hover {
+      border-color: #444;
+      cursor: pointer;
+    }
+  }
+  
+  p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 19px;
+    
+  }
+  
+  em {
+    font-weight: 800;
+  }
+  
+  ul {
+    position: relative;
+    margin-bottom: 20px;
+    li:before{ content:"-"; position:relative; left:-5px;}
+    li {
+      margin: 0 0 5px 10px; 
+    }
+  }
+  
+  h1 {
+    font-size: 36px;
+    opacity: 0.3;
+    margin-bottom: 10px;
+  }
+  h2 {
+    color: #006470;
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
 }
 
 .admin-container {
-	padding: 10px;
-	font-family: sans-serif;
-	font-weight: 200;
-	
-	.rightlogin {
-		margin: 10px;
-		float: right;
-		text-align: right;
-	}
-	
-	h1 {
-		font-size: 20px;
-		margin-bottom: 10px;
-	}	
-	
-	h2 {
-		font-size: 18px;
-		font-weight: 300;
-		margin-bottom: 20px;
-		em {
-			font-weight: 500;
-		}
-	}
-	
-	table {
-		background-color: #eee;
-		font-size: 14px;
-		width: 100%;
-		margin-bottom: 10px;
-		
-		td {
-			text-align: center;
-			padding: 20px 0;
-			border: 1px solid #333;
-			width: 25%;
-			
-			&.teamname {
-				background-color: #333;
-				color: #fff;
-				padding: 5px;
-			}
-			&.notdone {
-				background-color: #fff;
-			}
-			&.done {
-				background-color: #76C900;
-			}
-		}
-	}
+  padding: 10px;
+  font-family: sans-serif;
+  font-weight: 200;
+  
+  .rightlogin {
+    margin: 10px;
+    float: right;
+    text-align: right;
+  }
+  
+  h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }  
+  
+  h2 {
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    em {
+      font-weight: 500;
+    }
+  }
+  
+  table {
+    background-color: #eee;
+    font-size: 14px;
+    width: 100%;
+    margin-bottom: 10px;
+    
+    td {
+      text-align: center;
+      padding: 20px 0;
+      border: 1px solid #333;
+      width: 25%;
+      
+      &.teamname {
+        background-color: #333;
+        color: #fff;
+        padding: 5px;
+      }
+      &.notdone {
+        background-color: #fff;
+      }
+      &.done {
+        background-color: #76C900;
+      }
+    }
+  }
 }
 
 .homepage-container {
-	font-family: sans-serif;
-	font-weight: 200;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 40px;
-	width: 960px;
+  font-family: sans-serif;
+  font-weight: 200;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  width: 960px;
 
-	.title {
-		color: rgb(77, 60, 50);
-		font-family:'Lilita One', cursive; 
-		font-size: 40px;
-		margin-top: 100px;
-		margin-bottom: 10px;
-		text-align: center;
+  .title {
+    color: rgb(77, 60, 50);
+    font-family:'Lilita One', cursive; 
+    font-size: 40px;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    text-align: center;
 
-		span {
-		}
+    span {
+    }
 
-		img {
-			vertical-align:text-top;
-		}
-	}	
+    img {
+      vertical-align:text-top;
+    }
+  }  
 
-	label {
-	  display: block;
-	  font-weight:700;
-	  font-size: 15px;
-	}
+  label {
+    display: block;
+    font-weight:700;
+    font-size: 15px;
+  }
 
-	input {
-	  border: 1px solid #ccc;
-	  font-size: 14px;
-	  padding: 6px 12px;
-	  -moz-border-radius: 5px;
-	  border-radius: 5px;
-	  -webkit-border-radius: 5px;
-	}
+  input {
+    border: 1px solid #ccc;
+    font-size: 14px;
+    padding: 6px 12px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+  }
 
-	input:focus {
-	  border: 2px solid #66afe9;
+  input:focus {
+    border: 2px solid #66afe9;
       outline-width: 0;
       -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
-	  box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
-	}
+    box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
+  }
 
-	button {
-		background-color: rgb(33, 121, 132);
-		border: none;
-		color: white;
-		font-family: Arial, Helvetica;
-		font-size: 14px;
-		text-shadow: 0px -1px 0px #374683;
-		padding: 9px 12px;
-		margin: 10px 0 0;
-		-moz-border-radius: 5px;
-		border-radius: 5px;
-	}
+  button {
+    background-color: rgb(33, 121, 132);
+    border: none;
+    color: white;
+    font-family: Arial, Helvetica;
+    font-size: 14px;
+    text-shadow: 0px -1px 0px #374683;
+    padding: 9px 12px;
+    margin: 10px 0 0;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
 
-	button:hover {
-		background-color: rgb(48, 144, 156);
-		cursor:pointer;
-	}
+  button:hover {
+    background-color: rgb(48, 144, 156);
+    cursor:pointer;
+  }
 
-	.login-box {
-		background-color: rgb(247, 246, 243);
-		left: 50%;
-		position:absolute;
-		margin-left:-270px;
-		padding: 40px 20px;
-		width: 500px;
-	    -moz-border-radius: 10px;
-	    border-radius: 10px;
-	    -webkit-border-radius: 10px;
+  .login-box {
+    background-color: rgb(247, 246, 243);
+    left: 50%;
+    position:absolute;
+    margin-left:-270px;
+    padding: 40px 20px;
+    width: 500px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
 
-	    input {
-	    	width: 250px;
-	    }
+      input {
+        width: 250px;
+      }
 
-	    //.login-link-text {display: none;}
-	    .login-close-text {display: none;}
-	    .login-buttons-dropdown-align-left {
-	    	margin-left: auto;
-	    	margin-right: auto;
-	    	width: 276px;
-	    }
-	    #login-buttons-password {
-		    background-color: rgb(33, 121, 132);
-			border: none;
-			color: white;
-			font-family: Arial, Helvetica;
-			font-size: 14px;
-			text-shadow: 0px -1px 0px #374683;
-			padding: 9px 12px;
-			margin: 10px 0 0;
-			-moz-border-radius: 5px;
-			border-radius: 5px;
-			display:inline-block;
-	    }
+      //.login-link-text {display: none;}
+      .login-close-text {display: none;}
+      .login-buttons-dropdown-align-left {
+        margin-left: auto;
+        margin-right: auto;
+        width: 276px;
+      }
+      #login-buttons-password {
+        background-color: rgb(33, 121, 132);
+      border: none;
+      color: white;
+      font-family: Arial, Helvetica;
+      font-size: 14px;
+      text-shadow: 0px -1px 0px #374683;
+      padding: 9px 12px;
+      margin: 10px 0 0;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      display:inline-block;
+      }
 
-	    #login-buttons-password:hover {
-	    	background-color: rgb(48, 144, 156);
-			cursor:pointer;
-	    }
+      #login-buttons-password:hover {
+        background-color: rgb(48, 144, 156);
+      cursor:pointer;
+      }
 
-	    #signup-link { display: none;}
-	    #forgot-password-link { display: none; }
+      #signup-link { display: none;}
+      #forgot-password-link { display: none; }
 
-	    .signup-link:hover {
-	    	cursor:pointer;
-	    	color: #66afe9;
-	    }
+      .signup-link:hover {
+        cursor:pointer;
+        color: #66afe9;
+      }
 
-	    .greeting, .register-link {
-	    	margin-left: auto;
-	    	margin-right: auto;
-	    	padding-bottom: 10px;
-	    	width: 350px;
-	    }
+      .greeting, .register-link {
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 10px;
+        width: 350px;
+      }
 
-	    .register-link {
-	    	color:blue;
-	    }
+      .register-link {
+        color:blue;
+      }
 
-	}
+  }
 
 }
