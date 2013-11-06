@@ -174,20 +174,19 @@ Template.admin.helpers({
         return true
       }
     }
-  },
-  isCompleted: function(t) {
-    return _.isNull(t) ? "" : "done";
   }
 });
 
 var checkoffClick = function(event, template) {
+  console.log('click');
   var $cur = $(event.currentTarget);
   var id = $cur.parent().attr('data-teamid');
   var questionId = $cur.attr('data-questionId');
   var questionType = $cur.attr('data-questionType');
   
   var team = Teams.findOne({_id:id});
-  Meteor.call('checkoff', id, questionId);
+  var status = Status.findOne({title: "questionStatus"}).status;
+  Meteor.call('checkoff' + status.toUpperCase(), id, questionId);
 }
 
 Template.admin.events({
@@ -209,6 +208,7 @@ Template.admin.events({
     }
   },
   'click .newteam': function (event, template) {
+    console.log('Creating new team');
     var info = {};
     if ($('#teamname').val() !== '') {
       info['teamname'] = $('#teamname').val();
@@ -222,7 +222,7 @@ Template.admin.events({
           }
         }
       }
-      console.log(info);
+      info['beginner'] = $('#beginnerteam').is(':checked');
       if (info['members'].length > 0) {
         Meteor.call('newTeam', info);
       } else {
@@ -235,16 +235,17 @@ Template.admin.events({
   'click .checkoffbtn': checkoffClick
 });
 
-LETS OPEN SOME STUFF
-var openSesame = function(){
-var x = 5;
-console.log('opening.. ' + x)
-Meteor.call("unlockHTML", Teams.findOne({teamName: Meteor.user().profile.team})._id, x-1);
-}
-window.setTimeout(openSesame,500);
+// LETS OPEN SOME STUFF
+// var openSesame = function(){
+// var x = 5;
+// console.log('opening.. ' + x)
+// Meteor.call("unlockHTML", Teams.findOne({teamName: Meteor.user().profile.team})._id, x-1);
+// }
+// window.setTimeout(openSesame,500);
 
 Template.login.events({
   'click .newteam': function (event, template) {
+    console.log('Creating new team');
     var info = {};
     if ($('#teamname').val() !== '') {
       info['teamname'] = $('#teamname').val();
@@ -258,7 +259,7 @@ Template.login.events({
           }
         }
       }
-      console.log(info);
+      info['beginner'] = $('#beginnerteam').is(':checked');
       if (info['members'].length > 0) {
         Meteor.call('newTeam', info);
       } else {

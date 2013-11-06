@@ -20,7 +20,7 @@
   <tr data-teamid = '{{_id}}'>
   {{#each contest.html}}
     {{#if isSet id 1}}
-    <td class="{{isCompleted time}} checkoffbtn" data-questionid='{{id}}' data-questiontype='html'>
+    <td class="{{#if solved}}done{{/if}} checkoffbtn" data-questionid='{{id}}' data-questiontype='html'>
       {{shorttitle}}
     </td>
     {{/if}}
@@ -29,7 +29,7 @@
   <tr data-teamid = '{{_id}}'>
   {{#each contest.html}}
     {{#if isSet id 2}}
-    <td class="{{isCompleted time}} checkoffbtn" data-questionid='{{id}}' data-questiontype='html'>
+    <td class="{{#if solved}}done{{/if}} checkoffbtn" data-questionid='{{id}}' data-questiontype='html'>
       {{shorttitle}}
     </td>
     {{/if}}
@@ -59,6 +59,7 @@
   <div><label>Email</label><input type='text' id='member2email' /></div>
   <div><label>Team member 3</label><input type='text' id='member3name' /></div>
   <div><label>Email</label><input type='text' id='member3email' /></div>
+  <div><input type='checkbox' value='beginner' id='beginnerteam' /><label>Beginner?</label></div>
   <div><div class='newteam'>Create Team</div></div>
 </form>
 {{else}}
