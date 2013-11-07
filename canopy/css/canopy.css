@@ -161,12 +161,36 @@ body {
     line-height: 20px;
     margin-bottom: 10px;
     color: #222; }
+  .content .js3area {
+    overflow: auto; }
+  .content .js3textarea {
+    width: 300px;
+    float: left;
+    padding: 10px; }
+  .content .js3controls {
+    width: 300px;
+    float: left;
+    margin-left: 20px;
+    background-color: #FCF7E1;
+    overflow: auto;
+    padding: 10px; }
+  .content .b0, .content .b1 {
+    float: left;
+    margin-left: 10px; }
+  .content .js3rule {
+    display: block;
+    clear: left;
+    margin-bottom: 3px; }
+  .content .js3output {
+    display: block;
+    clear: left; }
+  .content .js3submit {
+    display: block; }
   .content .testfailed {
     color: #ee0000; }
   .content button {
     margin-bottom: 10px;
-    display: block;
-    clear: both; }
+    display: block; }
   .content .coding {
     overflow: auto; }
   .content ul {

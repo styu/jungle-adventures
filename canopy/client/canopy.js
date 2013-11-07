@@ -209,9 +209,33 @@ var js2  = function (event, template) {
   }
 }
 
+var shouldClick = 0;
+var inARow = 0;
+var js3 = function(event, template){
+  var $cur = $(event.currentTarget);
+  shouldClick = $('.should-click').text();
+  if ($cur.attr('class')[1] == shouldClick){
+  	++ inARow;
+  } else {
+  	inARow = 0;
+  }
+  shouldClick = Math.round(Math.random());
+  $('.should-click').text(shouldClick);
+  $('.inarow').text(inARow);
+  if (inARow > 1000) {
+    inARow = 0;
+    console.log("YOU DID IT!");
+    id =  Teams.findOne({teamName: Meteor.user().profile.team})._id
+  	setTimeout(function(){Meteor.call('checkoffJS', id, 3)}, 1000);
+  }
+}
+
 Template.content.events({
   'click .question': test,
-  'click .js2submit': js2
+  'click .js2submit': js2,
+  'click .js3submit': js3,
+  'click .b0': js3,
+  'click .b1': js3
 });
 
 Template.admin.teams = function(){
