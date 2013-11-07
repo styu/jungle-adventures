@@ -76,4 +76,5 @@ define('questions', [], function() {
 
     return questions;
   }
-})
+  }
+});
