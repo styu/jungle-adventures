@@ -14,6 +14,10 @@ require(['login', 'timer', 'admin', 'checkoff'], function(login, timer, admin, c
       event.preventDefault();
     }
   });
+  
+  Template.login.helpers({
+    teamnameError: function() { return login.teamnameError(); }  
+  });
 
 
   // Main Site Content
