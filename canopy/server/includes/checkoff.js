@@ -91,7 +91,7 @@ define('checkoff', [], function() {
     checkoffSQL: function(id, questionID, user) {
       if (Roles.userIsInRole(user, ["admin"])) {
         var team = Teams.findOne({_id:id});
-        var question = team.contest.js[(questionID-1)];
+        var question = team.contest.sql[(questionID-1)];
         if (_.isNull(question.time)){
           var val = new Date();
         } else {
