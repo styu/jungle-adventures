@@ -9,11 +9,14 @@
     var questions = {'html': new Array(),
                      'js': new Array(),
                      'sql': new Array()};
-    var shortTitle =  ['hello', 'badge', 'folder', 'table', 'compass', 'footprint', 'photo', 'BONUS'];
+                     
+// HTML //////////////////////////////////////////
+
+    var shortTitle =  ['hello', 'badge', 'folder', 'table', 'compass', 'responsive', 'photo', 'BONUS'];
     var longTitle =  ['Hello Jungle', 'Badger Badge', 'Mission Report', 'Shopping List', 'Some Compass', 'Footprints', 'Photography', 'BONUS'];
     
-    var pointValues = [7, 10, 10, 14, 15, 20, 24, 0];
-    var timelengths = [5, 5,  5,  5,  5,  5,  15, 0];
+    var pointValues = [7, 10, 10, 14, 15, 20, 24, 5];
+    var timelengths = [5, 5,  5,  5,  5,  5,  5, 10];
     for (var i = 1; i <= 8 ; i++) {
       questions['html'].push({id: i,
                              shorttitle: shortTitle[i-1],
@@ -30,11 +33,13 @@
     questions['html'][0]['locked'] = false;
     questions['html'][1]['locked'] = false;
 
-    var shortTitle =  ['hello', 'badge', 'folder', 'table', 'compass', 'footprint', 'photo', 'BONUS'];
-    var longTitle =  ['Hello Jungle', 'Badger Badge', 'Mission Report', 'Shopping List', 'Some Compass', 'Footprints', 'Photography', 'BONUS'];
+// JAVASCRIPT //////////////////////////////////////////
+
+    var shortTitle =  ['alert', 'pattern', 'button', 'arrows', 'ajax', 'moving', 'paths', 'meteor'];
+    var longTitle =  ['Alert Jungle', 'Patterns', 'Button Mash', 'Flying Arrows', 'Interception', 'Moving Critters', 'Lost in the Jungle', 'Meteor Attack'];
     
-    var pointValues = [7, 10, 10, 14, 15, 20, 24, 0];
-    var timelengths = [5, 5,  5,  5,  5,  5,  15, 0];
+    var pointValues = [10, 10, 10, 10, 10, 15, 15, 20];
+    var timelengths = [5, 5,  5,  5,  5,  3,  3, 14];
     for (var i = 1; i <= 8 ; i++) {
       questions['js'].push({id: i,
                             shorttitle: shortTitle[i-1],
@@ -51,8 +56,10 @@
     questions['js'][0]['locked'] = false;
     questions['js'][1]['locked'] = false;
 
-    var shortTitle =  ['hello', 'badge', 'folder', 'table', 'compass', 'footprint', 'photo', 'BONUS'];
-    var longTitle =  ['Hello Jungle', 'Badger Badge', 'Mission Report', 'Shopping List', 'Some Compass', 'Footprints', 'Photography', 'BONUS'];
+// SQL //////////////////////////////////////////
+
+    var shortTitle =  ['alert', 'pattern', 'button', 'arrows', 'ajax', 'moving', 'paths', 'meteor'];
+    var longTitle =  ['Alert Jungle', 'Patterns', 'Button Mash', 'Flying Arrows', 'Interception', 'Moving Critters', 'Lost in the Jungle', 'Meteor Attack'];
     
     var pointValues = [7, 10, 10, 14, 15, 20, 24, 0];
     var timelengths = [5, 5,  5,  5,  5,  5,  15, 0];
@@ -106,6 +113,7 @@
           //{name:"Normal User",email:"normal@example.com",roles:[]},
           {name:"Steph Yu",email:"styu@mit.edu",roles:['admin']},
           {name:"Victor H",email:"vhung@mit.edu",roles:['admin']},
+          {name:"Kim T",email:"toyk2a@mit.edu",roles:['admin']},
           //{name:"Admin User",email:"admin@example.com",roles:['admin']}
         ];
 
@@ -172,7 +180,7 @@
               "contest.html.$.solved" : !question.solved}
         });
 
-        var unlocked = [7, 17, 27, 41, 56];
+        var unlocked = [7, 17, 27, 41, 56, 56];
         team = Teams.findOne({_id:id});
         var totalpoints = getPoints(team, 'html');
         _.each(unlocked, function(points, index) {
@@ -206,7 +214,7 @@
               "contest.js.$.solved" : !question.solved}
         });
 
-        var unlocked = [7, 17, 27, 41, 56];
+        var unlocked = [10, 20, 30, 40, 50, 65];
         team = Teams.findOne({_id:id});
         var totalpoints = getPoints(team, 'js');
         _.each(unlocked, function(points, index) {
