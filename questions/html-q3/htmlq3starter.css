@@ -1,0 +1,24 @@
+/* Your CSS Here */
+
+.filefolder {
+	background-color: #e3c798;
+    -webkit-box-shadow:  1px 1px 10px 0px rgba(0, 0, 0, 0.5);
+    box-shadow:  1px 1px 10px 0px rgba(0, 0, 0, 0.5);
+	/* Your CSS Here */
+}
+
+.paper {
+    -webkit-box-shadow:  1px 1px 10px 0px rgba(0, 0, 0, 0.5);
+    box-shadow:  1px 1px 10px 0px rgba(0, 0, 0, 0.5);
+    /* Your CSS Here */
+}
+
+.polaroid {
+    -webkit-box-shadow:  1px 1px 10px 0px rgba(0, 0, 0, 0.5);
+    box-shadow:  1px 1px 10px 0px rgba(0, 0, 0, 0.5);
+    /* Your CSS Here */
+}
+
+.paperclip {
+    /* Your CSS Here */
+}

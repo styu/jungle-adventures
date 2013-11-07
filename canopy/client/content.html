@@ -15,11 +15,13 @@
     </div>
     </div>
     <div class='leftbar'>
+    	{{#isolate}}
       {{#if isReady}}
         {{> nav}}
       {{else}}
         Loading...
       {{/if}}
+      {{/isolate}}
     </div>
     <div class="content">
     </div>
