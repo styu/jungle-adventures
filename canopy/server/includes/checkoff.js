@@ -54,39 +54,43 @@ define('checkoff', [], function() {
       }
     },
     checkoffJS: function(id, questionID, user) {
-      var team = Teams.findOne({_id:id});
-      var question = team.contest.js[(questionID-1)];
-      if (_.isNull(question.time)){
-        var val = new Date();
-      } else {
-        var val = null;
-      }
-      Teams.update(
-        {_id: id, "contest.js.id": parseInt(questionID)}, 
-        {$set: 
-          { "contest.js.$.time" : val,
-            "contest.js.$.solved" : !question.solved}
-        }
-      );
-
-      var unlocked = [7, 17, 27, 41, 56];
-      team = Teams.findOne({_id:id});
-      var totalpoints = getPoints(team, 'js');
-      _.each(unlocked, function(points, index) {
-        if ( points <= totalpoints) {
-          Teams.update(
-            {_id: id, "contest.js.id": parseInt(index + 3)}, 
-            {$set: 
-              { "contest.js.$.locked" : false}
-          });
+      if (Status.findOne({title: 'questionStatus'}).status === 'js' ||
+          Roles.userIsInRole(user, ['beginner']) ||
+          Roles.userIsInRole(user, ['admin'])) {
+        var team = Teams.findOne({_id:id});
+        var question = team.contest.js[(questionID-1)];
+        if (_.isNull(question.time)){
+          var val = new Date();
         } else {
-          Teams.update(
-            {_id: id, "contest.js.id": parseInt(index + 3)}, 
-            {$set: 
-              { "contest.js.$.locked" : true && !team.beginner}
-          });
+          var val = null;
         }
-      });
+        Teams.update(
+          {_id: id, "contest.js.id": parseInt(questionID)}, 
+          {$set: 
+            { "contest.js.$.time" : val,
+              "contest.js.$.solved" : !question.solved}
+          }
+        );
+
+        var unlocked = [7, 17, 27, 41, 56];
+        team = Teams.findOne({_id:id});
+        var totalpoints = getPoints(team, 'js');
+        _.each(unlocked, function(points, index) {
+          if ( points <= totalpoints) {
+            Teams.update(
+              {_id: id, "contest.js.id": parseInt(index + 3)}, 
+              {$set: 
+                { "contest.js.$.locked" : false}
+            });
+          } else {
+            Teams.update(
+              {_id: id, "contest.js.id": parseInt(index + 3)}, 
+              {$set: 
+                { "contest.js.$.locked" : true && !team.beginner}
+            });
+          }
+        });
+      }
     },
     checkoffSQL: function(id, questionID, user) {
       if (Roles.userIsInRole(user, ["admin"])) {

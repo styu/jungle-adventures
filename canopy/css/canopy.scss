@@ -100,6 +100,12 @@ body {
     color: #006470;
     margin-bottom: 20px;
   }
+  h2.hover {
+    cursor: pointer;
+    &:hover {
+      color: lighten(#006470, 10%);
+    }
+  }
   ul {
     li {
       margin-bottom: 10px;
@@ -141,6 +147,9 @@ body {
         }
       }
     }
+  }
+  ul.hidden {
+    display: none;
   }
   .title {
     margin-bottom: 3px;

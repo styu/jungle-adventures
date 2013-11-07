@@ -1,0 +1,88 @@
+<template name='adminscoreboard'>
+{{#if isReady}}
+Back to <a href='/admin'>admin</a>
+<div class="scoreboard">
+  <h1>6.470 Jungle Adventures Top Ten</h1>
+  <table>
+    <thead>
+      <tr>
+        <th width="50" class="place">Place</th>
+        <th>Team Name</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each teams}}
+        <tr>
+          <td class="place">{{place}}</td>
+          <td>{{teamName}}</td>
+          <td>{{score}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <h1>6.470 Jungle Adventures Top Ten HTML/CSS</h1>
+  <table>
+    <thead>
+      <tr>
+        <th width="50" class="place">Place</th>
+        <th>Team Name</th>
+        <th>HTML/CSS Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each htmlteams}}
+        <tr>
+          <td class="place">{{place}}</td>
+          <td>{{teamName}}</td>
+          <td>{{score}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <h1>6.470 Jungle Adventures Top Ten JS</h1>
+  <table>
+    <thead>
+      <tr>
+        <th width="50" class="place">Place</th>
+        <th>Team Name</th>
+        <th>JS Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each jsteams}}
+        <tr>
+          <td class="place">{{place}}</td>
+          <td>{{teamName}}</td>
+          <td>{{score}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <h1>6.470 Jungle Adventures Top Ten SQL</h1>
+  <table>
+    <thead>
+      <tr>
+        <th width="50" class="place">Place</th>
+        <th>Team Name</th>
+        <th>SQL Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each sqlteams}}
+        <tr>
+          <td class="place">{{place}}</td>
+          <td>{{teamName}}</td>
+          <td>{{score}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+Loading...
+{{/if}}
+</div>
+</template>

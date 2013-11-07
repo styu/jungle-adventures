@@ -16,6 +16,13 @@
     </div>
     <div class='leftbar'>
       
+        {{#if isJS}}
+          {{> htmlnav}}
+        {{/if}}
+        {{#if isSQL}}
+          {{> htmlnav}}
+          {{> jsnav}}
+        {{/if}}
         {{> nav}}
 
     </div>

@@ -43,6 +43,12 @@ require(['timer', 'admin'], function(timer, admin) {
               }
             });
             return sum;
+          },
+          isJS: function() {
+            return Status.findOne({title: 'questionStatus'}).status === 'js';
+          },
+          isSQL: function() {
+            return Status.findOne({title: 'questionStatus'}).status === 'sql';
           }
         }
       },
@@ -106,6 +112,30 @@ require(['timer', 'admin'], function(timer, admin) {
       action: function() {
         this.render('scoreboard', {to: 'main'});
       }
-    })
+    });
+
+    this.route('adminscoreboard', {
+      layoutTemplate: 'home',
+      path: '/admin/scoreboard',
+
+      waitOn: function() {
+        return [Meteor.subscribe('status'),
+                Meteor.subscribe('teams')];
+      },
+
+      before: function() {
+        if (!Meteor.user()) {
+          this.redirect('/');
+          this.stop();
+        } else if (!Roles.userIsInRole(Meteor.user(), ['admin'])) {
+          this.render('authorized', {to: 'main'});
+          this.stop();
+        }
+      },
+
+      action: function() {
+        this.render('adminscoreboard', {to: 'main'});
+      }
+    });
   });
 });

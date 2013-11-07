@@ -1,4 +1,4 @@
-require(['login', 'timer', 'admin', 'checkoff'], function(login, timer, admin, checkoff) {
+require(['login', 'timer', 'admin', 'checkoff', 'scoreboard'], function(login, timer, admin, checkoff, scoreboard) {
   var statusHandler = Meteor.subscribe('status');
   var teamsHandler = Meteor.subscribe('teams')
   Teams = new Meteor.Collection('teams');
@@ -33,16 +33,36 @@ require(['login', 'timer', 'admin', 'checkoff'], function(login, timer, admin, c
       }
     },
     'click .js2submit': function(event, template) {
-      checkoff.js2(event, template);
+      if (Status.findOne({title: 'questionStatus'}).status === 'js' ||
+          Roles.userIsInRole(Meteor.user(), ['beginner'])) {
+        checkoff.js2(event, template);
+      } else {
+        $('.js2output').html('The JS portion of the contest is over!');
+      }
     },
     'click .js3submit': function(event, template) {
-      checkoff.js3(event, template)
+      if (Status.findOne({title: 'questionStatus'}).status === 'js' ||
+          Roles.userIsInRole(Meteor.user(), ['beginner'])) {
+        checkoff.js3(event, template)
+      } else {
+        $('.js3output').html('The JS portion of the contest is over!');
+      }
     },
     'click .b0': function(event, template) {
-      checkoff.js3(event, template);
+      if (Status.findOne({title: 'questionStatus'}).status === 'js' ||
+          Roles.userIsInRole(Meteor.user(), ['beginner'])) {
+        checkoff.js3(event, template);
+      } else {
+        $('.js3output').html('The JS portion of the contest is over!');
+      }
     },
     'click .b1': function(event, template) {
-      checkoff.js3(event, template);
+      if (Status.findOne({title: 'questionStatus'}).status === 'js' ||
+          Roles.userIsInRole(Meteor.user(), ['beginner'])) {
+        checkoff.js3(event, template);
+      } else {
+        $('.js3output').html('The JS portion of the contest is over!');
+      }
     }
   });
 
@@ -72,40 +92,67 @@ require(['login', 'timer', 'admin', 'checkoff'], function(login, timer, admin, c
     }
   });
 
+  Template.htmlnav.helpers({
+    currentQuestions: function() {
+      if (Meteor.user()) {
+        var teamname = Meteor.user().profile.team;
+        var team = Teams.findOne({teamName: teamname});
+        return team.contest['html'];
+      }
+    },
+    isReady: isReady,
+  });
+
+  Template.htmlnav.events({
+    'click .hover': function(event, template) {
+      if ($('.html').hasClass('hidden')) {
+        $('.html').slideDown();
+        $('.html').removeClass('hidden');
+      } else {
+        $('.html').slideUp();
+        $('.html').addClass('hidden');
+      }
+    }
+  });
+
+  Template.jsnav.helpers({
+    currentQuestions: function() {
+      if (Meteor.user()) {
+        var teamname = Meteor.user().profile.team;
+        var team = Teams.findOne({teamName: teamname});
+        return team.contest['js'];
+      }
+    },
+    isReady: isReady,
+  });
+
+  Template.jsnav.events({
+    'click .hover': function(event, template) {
+      if ($('.js').hasClass('hidden')) {
+        $('.js').slideDown();
+        $('.js').removeClass('hidden');
+      } else {
+        $('.js').slideUp();
+        $('.js').addClass('hidden');
+      }
+    }
+  });
+
   // Scoreboard
   Template.scoreboard.teams = function() {
-    var teamsList = Teams.find();
-    console.log(teamsList);
-    var teams = [];
-    teamsList.forEach(function(curTeam) {
-      var team = {teamName: curTeam.teamName};
-      var questions = ['html', 'js', 'sql'];
-      var solved = [];
-      var sum = 0;
-      _.each(questions, function(questionType) {
-        var solved = _.filter(curTeam.contest[questionType], function(question) { return question.solved; });
-
-        // Calculate total score
-        var points = _.map(solved, function(question) { return question.points; });
-        if (points.length !== 0) {
-          sum += _.reduce(points, function(memo, points) {return memo + points; });
-        }
-      });
-      team['score'] = sum;
-      team['topthree'] = false;
-      teams.push(team);
-    });
-    var finalteams = _.sortBy(teams, function(team) { return team.score; }).reverse();
-    finalteams[0]['topthree'] = true;
-    finalteams[1]['topthree'] = true;
-    finalteams[2]['topthree'] = true;
-    for (i in finalteams){
-      finalteams[i]['place'] = (parseInt(i) + 1);
-    }
-    return finalteams;
+    return scoreboard.scoreboard();
   }
 
   Template.scoreboard.isReady = isReady;
+
+  Template.adminscoreboard.helpers({
+    teams: function() { return scoreboard.topten(); },
+    htmlteams: function() { return scoreboard.htmltopten(); },
+    jsteams: function() { return scoreboard.jstopten(); },
+    sqlteams: function() { return scoreboard.sqltopten(); },
+    isReady: isReady
+  });
+
 
   // Admin
 
