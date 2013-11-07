@@ -9,13 +9,15 @@ define('login', [], function() {
         for (var i = 1; i <= 3; i++) {
           if ($('#member' + i + 'name').val() !== '' && $('#member' + i + 'email').val() !== '') {
             var email = $('#member' + i + 'email').val();
+            var name = $('#member' + i + 'name').val();
+            info['members'].push({name: name, email: email});
           }
         }
         info['beginner'] = $('#beginnerteam').is(':checked');
         if (info['members'].length > 0) {
           Meteor.call('newTeam', info, function(err, res) {
             if (err) {
-              console.log('error in form');
+              console.log(err);
             }
           });
         } else {

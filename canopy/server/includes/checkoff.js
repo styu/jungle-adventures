@@ -1,4 +1,4 @@
-define('admin', [], function() {
+define('checkoff', [], function() {
 
   var getPoints = function(team, questionType) {
     var solved = _.filter(team.contest[questionType],
@@ -123,6 +123,6 @@ define('admin', [], function() {
           }
         });
       }
-    },
+    }
   }
 });

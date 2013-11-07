@@ -1,11 +1,11 @@
-define('login', [], function() {
+define('login', ['questions'], function(questions) {
   return {
-    register: function() {
+    register: function(info) {
       console.log('Creating new team: ' + info['teamname']);
       var ids = [];
-      if (!_.isUndefined(Teams.findOne({teamName: info['teamname']}))) {
+      if (_.isUndefined(Teams.findOne({teamName: info['teamname']}))) {
         _.each(info['members'], function(member) {
-          if (!_.isUndefined(Meteor.users.findOne({'emails.address': member.email}))) {
+          if (_.isUndefined(Meteor.users.findOne({'emails.address': member.email}))) {
             var id,
               user;
 
@@ -34,12 +34,12 @@ define('login', [], function() {
           }
         });
         if (info['members'].length > 0) {
-          var questions = getQuestions(info['beginner']);
+          var q = questions.getQuestions(info['beginner']);
           Teams.insert({teamName: info['teamname'],
                         users: ids,
-                        contest: {html: questions['html'],
-                                  js: questions['js'],
-                                  sql: questions['sql']},
+                        contest: {html: q['html'],
+                                  js: q['js'],
+                                  sql: q['sql']},
                         beginner: info['beginner']});
         } else {
           throw "No members!";

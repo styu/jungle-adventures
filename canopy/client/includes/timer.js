@@ -25,25 +25,27 @@ define('timer', [], function() {
       return minutes + seconds;
     },
     updateTimer: function() {
-      if (timer - 1 >= 0) {
-        timer = timer - 1;
-        var elapsed = Math.floor((45 * 60 - timer)/60);
-        var teamname = Meteor.user().profile.team;
-        var team = Teams.findOne({teamName: teamname});
-        var status = 'html';
-        //var status = Status.findOne({title: "questionStatus"}).status;
-        var totalTime = 0;
-        _.each(team.contest[status], function(question, index) {
-          totalTime += question.timelength;
-          var nextQuestion = team.contest[status][index + 1];
-          if (totalTime <= elapsed  && nextQuestion.locked) {
-            Meteor.call("unlock" + status.toUpperCase(), team._id, index + 1);
-          }
-        });
-      } else {
-        timer = 0;
+      if (Meteor.user()) {
+        if (timer - 1 >= 0) {
+          timer = timer - 1;
+          var elapsed = Math.floor((45 * 60 - timer)/60);
+          var teamname = Meteor.user().profile.team;
+          var team = Teams.findOne({teamName: teamname});
+          var status = 'html';
+          //var status = Status.findOne({title: "questionStatus"}).status;
+          var totalTime = 0;
+          _.each(team.contest[status], function(question, index) {
+            totalTime += question.timelength;
+            var nextQuestion = team.contest[status][index + 1];
+            if (totalTime <= elapsed  && nextQuestion.locked) {
+              Meteor.call("unlock" + status.toUpperCase(), team._id, index + 1);
+            }
+          });
+        } else {
+          timer = 0;
+        }
+        timerDep.changed();
       }
-      timerDep.changed();
     },
     resetTimer: function() {
       timer = 0;
