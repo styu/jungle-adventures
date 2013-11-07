@@ -3,9 +3,11 @@
 	require('require_login.php');
 	require('../db.php');
 
-	setcookie('6470JUNGLEADVENTURES', 'giraffe-cookies');
+	$arr1 = array('giraffe-', 'monkey-', 'lizard-', 'jungle-', 'lion-', 'elephants-');
+	$arr2 = array('cookies', 'tails', 'bananas', 'trees', 'adventures');
 
-	print_login_info();
+	$secret = $arr1[array_rand($arr1)] . $arr2[array_rand($arr2)];
+	setcookie('6470JUNGLEADVENTURES', $secret);
 
 	$query = "SELECT post FROM user_posts where username='$user' ORDER BY post DESC";
 	$result = mysql_query($query, $db) or die(mysql_error());
@@ -25,6 +27,8 @@
 	</head>
 
 	<body>
+		<?php print_login_info(); ?>
+		<?php echo 'Secret:  ' . $secret ?>
 		<p>
 			<textarea id="post-contents" style="width:500px; height:300px"></textarea><br />
 			<button id="submit">Submit</button>
