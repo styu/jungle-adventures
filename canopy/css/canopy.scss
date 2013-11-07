@@ -284,9 +284,11 @@ body {
   ul {
     position: relative;
     margin-bottom: 20px;
-    li:before{ content:"-"; position:relative; left:-5px;}
+    li:before{ content:"-"; position:relative; left:-8px;}
     li {
       margin: 0 0 5px 10px; 
+      line-height: 20px;
+      text-indent: 0;
     }
   }
   

@@ -205,9 +205,11 @@ body {
     .content ul li:before {
       content: "-";
       position: relative;
-      left: -5px; }
+      left: -8px; }
     .content ul li {
-      margin: 0 0 5px 10px; }
+      margin: 0 0 5px 10px;
+      line-height: 20px;
+      text-indent: 0; }
   .content h1 {
     font-size: 36px;
     opacity: 0.3;

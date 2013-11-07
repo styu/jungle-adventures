@@ -1,15 +1,15 @@
 $(function() {
 
   var arrow_timer = setInterval(function(){
-    var start_vel = 40*Math.random() + 40;
-    var start_y = Math.random()*100;
+    var start_vel = 8*Math.random() + 40;
+    var start_y = Math.random()*20;
     var a = Arrow(0.0, start_y, start_vel, $(window).width(), $(window).height());
     var timer = setInterval(function(){
       if(a.step()){
         clearInterval(timer);
       }
-    },200);
-  }, 400);
+    },40);
+  }, 200);
 
 });
 
@@ -18,7 +18,7 @@ Arrow = function(startx, starty, startvel, windowx, windowy){
   var pos_x = startx;
   var pos_y = starty;
   var vel_y = 0.0;
-  var gravity = 10;
+  var gravity = 2;
   var rotation = 0;
 
   var that = Object.create(Arrow.prototype);
