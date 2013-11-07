@@ -62,7 +62,7 @@ require(['login', 'timer', 'admin', 'checkoff'], function(login, timer, admin, c
       if (Meteor.user()) {
         var status = Status.findOne({title: "questionStatus"}).status;
         var index = _.indexOf(['html', 'js', 'sql'], status);
-        var titles = ['HTML/CSS', 'JS', 'SQL ATTACK'];
+        var titles = ['HTML/CSS', 'JavaScript', 'Web Security Puzzles'];
         return titles[index];
       }
     }
