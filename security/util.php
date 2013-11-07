@@ -26,10 +26,6 @@
 		return $token;
 	}
 
-	function test() {
-		echo "TEST HERE";
-	}
-
 	function print_success($phrase, $question_name) {
 		echo "You've successfully logged in!<br />";
 		echo "The secret phrase is '$phrase'<br />";

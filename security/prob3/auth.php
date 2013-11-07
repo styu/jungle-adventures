@@ -1,16 +1,18 @@
 <?php
-	require("util.php");
-	function print_error() {
+	session_start();
+
+	require("../util.php");
+
+	function print_auth_error() {
 		echo "Username or password was incorrect<br />";
 		echo link_to("login.php", "Back to login");
 	}
 
-	session_start();
 	if (empty($_POST["username"]) || empty($_POST["password"])) {
-		print_error();
+		print_auth_error();
 
 	} else {
-		require("db.php");
+		require("../db.php");
 		$user = mysql_real_escape_string($_POST["username"]);
 		$pass = $_POST["password"];
 		$query = "SELECT password from users WHERE username='" . $user . "'";
@@ -27,7 +29,7 @@
         	$_SESSION['username'] = $user;
         	header("Location: index.php");
         } else {
-        	print_error();
+        	print_auth_error();
         }
 	}
 ?>
