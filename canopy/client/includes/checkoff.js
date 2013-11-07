@@ -1,4 +1,5 @@
 define('checkoff', [], function() {
+  var inARow = 0;
   return {
     js2: function (event, template) {
       var usercode = $('.js2textarea').val();
@@ -78,22 +79,27 @@ define('checkoff', [], function() {
     },
 
     js3: function(event, template){
-      var $cur = $(event.currentTarget);
-      shouldClick = $('.should-click').text();
-      if ($cur.attr('class')[1] == shouldClick){
-        ++ inARow;
-      } else {
-        inARow = 0;
-      }
-      shouldClick = Math.round(Math.random());
-      $('.should-click').text(shouldClick);
-      $('.inarow').text(inARow);
-      if (inARow > 1000) {
-        inARow = 0;
-        console.log("YOU DID IT!");
-        id =  Teams.findOne({teamName: Meteor.user().profile.team})._id
+  var $cur = $(event.currentTarget);
+  if ($cur.attr('class') === 'js3submit'){
+    eval($('.js3textarea').val());
+  } else {
+          shouldClick = $('.should-click').text();
+          if ($cur.attr('class')[1] == shouldClick){
+                  ++ inARow;
+          } else {
+                  inARow = 0;
+          }
+          shouldClick = Math.round(Math.random());
+          $('.should-click').text(shouldClick);
+          $('.inarow').text(inARow);
+          if (inARow >= 1000) {
+            inARow = 0;
+            console.log("YOU DID IT!");
+            $('.js3controls').append('<br />PASS!');
+            id =  Teams.findOne({teamName: Meteor.user().profile.team})._id
         Meteor.call('checkoffJS', id, 3, undefined);
       }
+    }
     }
   }
 });

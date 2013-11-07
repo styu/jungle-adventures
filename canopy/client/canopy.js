@@ -39,7 +39,7 @@ require(['login', 'timer', 'admin', 'checkoff'], function(login, timer, admin, c
       checkoff.js3(event, template)
     },
     'click .b0': function(event, template) {
-      checkoff.js2(event, template);
+      checkoff.js3(event, template);
     },
     'click .b1': function(event, template) {
       checkoff.js3(event, template);
