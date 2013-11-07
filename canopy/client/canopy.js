@@ -15,6 +15,9 @@ require(['login', 'timer', 'admin', 'checkoff'], function(login, timer, admin, c
     }
   });
 
+
+  // Main Site Content
+
   Template.content.isReady = isReady;
 
   Template.content.events({
@@ -65,6 +68,37 @@ require(['login', 'timer', 'admin', 'checkoff'], function(login, timer, admin, c
     }
   });
 
+  // Scoreboard
+  Template.scoreboard.teams = function() {
+    var teamsList = Teams.find();
+    console.log(teamsList);
+    var teams = [];
+    teamsList.forEach(function(curTeam) {
+      var team = {teamName: curTeam.teamName};
+      var questions = ['html', 'js', 'sql'];
+      var solved = [];
+      var sum = 0;
+      _.each(questions, function(questionType) {
+        var solved = _.filter(curTeam.contest[questionType], function(question) { return question.solved; });
+
+        // Calculate total score
+        var points = _.map(solved, function(question) { return question.points; });
+        if (points.length !== 0) {
+          sum += _.reduce(points, function(memo, points) {return memo + points; });
+        }
+      });
+      team['score'] = sum;
+      team['topthree'] = false;
+      teams.push(team);
+    });
+    var finalteams = _.sortBy(teams, function(team) { return team.score; }).reverse();
+    finalteams[0]['topthree'] = true;
+    finalteams[1]['topthree'] = true;
+    finalteams[2]['topthree'] = true;
+    return finalteams;
+  }
+
+  Template.scoreboard.isReady = isReady;
 
   // Admin
 

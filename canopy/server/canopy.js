@@ -75,13 +75,13 @@ require(['login', 'checkoff'], function(login, checkoff) {
     Meteor.methods({
       checkoffHTML: function(id, questionID, user) {
         console.log('html checkoff');
-        admin.checkoffHTML(id, questionID, user);
+        checkoff.checkoffHTML(id, questionID, user);
       },
       checkoffJS: function(id, questionID, user) {
-        admin.checkoffJS(id, questionID, user);
+        checkoff.checkoffJS(id, questionID, user);
       },
       checkoffSQL: function(id, questionID, user) {
-        admin.checkoffSQL(id, questionID, user);
+        checkoff.checkoffSQL(id, questionID, user);
       },
       newTeam: function(info) {
         login.register(info);

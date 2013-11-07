@@ -1,0 +1,23 @@
+<template name='scoreboard'>
+{{#if isReady}}
+  <table>
+    <thead>
+      <tr>
+        <th>Team Name</th>
+        <th>Score</th>
+        <th>Last Solve</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each teams}}
+        <tr class='{{#if topthree}}topthree{{/if}}'>
+          <td>{{teamName}}</td>
+          <td>{{score}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+Loading...
+{{/if}}
+</template>

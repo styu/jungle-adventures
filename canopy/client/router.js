@@ -14,6 +14,8 @@ require(['timer', 'admin'], function(timer, admin) {
           this.render('login', {to: 'main'});
           Accounts._loginButtonsSession.set('dropdownVisible', true);
           this.stop();
+        } else if (Roles.userIsInRole(Meteor.user()._id, ['admin'])) {
+          this.redirect('/admin');
         }
       },
 
@@ -85,5 +87,25 @@ require(['timer', 'admin'], function(timer, admin) {
         this.render('admin', {to: 'main'});
       }
     });
+
+    this.route('scoreboard', {
+      layoutTemplate: 'home',
+
+      waitOn: function() {
+        return [Meteor.subscribe('status'),
+                Meteor.subscribe('teams')];
+      },
+
+      before: function() {
+        if (!Meteor.user()) {
+          this.redirect('/');
+          this.stop();
+        }
+      },
+
+      action: function() {
+        this.render('scoreboard', {to: 'main'});
+      }
+    })
   });
 });
