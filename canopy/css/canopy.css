@@ -344,6 +344,34 @@ body {
   .homepage-container .login-box .register-link {
     color: blue; }
 
+.scoreboard h1 {
+  text-align: center;
+  font-family: sans-serif;
+  margin: 20px;
+  font-size: 30px; }
+.scoreboard table {
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  width: 800px;
+  margin: 10px auto; }
+  .scoreboard table .place {
+    font-weight: 200;
+    text-align: center; }
+  .scoreboard table th {
+    background-color: #333;
+    color: #eee;
+    padding: 6px;
+    text-align: left; }
+  .scoreboard table td {
+    padding: 6px; }
+  .scoreboard table tr:nth-child(even) {
+    background-color: #ffffff; }
+  .scoreboard table tr:nth-child(odd) {
+    background-color: #eeffee; }
+  .scoreboard table .topthree td {
+    color: rgba(0, 0, 0, 0.3); }
+
 button {
   background-color: #217984;
   border: none;

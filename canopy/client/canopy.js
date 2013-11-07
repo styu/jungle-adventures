@@ -95,6 +95,9 @@ require(['login', 'timer', 'admin', 'checkoff'], function(login, timer, admin, c
     finalteams[0]['topthree'] = true;
     finalteams[1]['topthree'] = true;
     finalteams[2]['topthree'] = true;
+    for (i in finalteams){
+      finalteams[i]['place'] = (parseInt(i) + 1);
+    }
     return finalteams;
   }
 
