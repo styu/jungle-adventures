@@ -29,17 +29,17 @@ require(['timer', 'admin'], function(timer, admin) {
             var questions = ['html', 'js', 'sql'];
             var solved = [];
             var team = Teams.findOne({teamName: Meteor.user().profile.team});
+            var sum = 0;
             _.each(questions, function(questionType) {
-              _.extend(solved, _.filter(team.contest[questionType],
+              var solved = _.filter(team.contest[questionType],
                                    function(question) {
                                     return question.solved;
-                                   }));
+                                   });
+              var points = _.map(solved, function(question) { return question.points; });
+              if (points.length != 0) {
+                sum += _.reduce(points, function(memo, points) {return memo + points; });
+              }
             });
-            var points = _.map(solved, function(question) { return question.points; });
-            if (points.length == 0) {
-              return 0;
-            }
-            var sum = _.reduce(points, function(memo, points) {return memo + points; });
             return sum;
           }
         }
