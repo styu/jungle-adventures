@@ -19,41 +19,48 @@ define('checkoff', [], function() {
       
       var good = true;
       if (typeof(pattern) === "function") {
-        // Tests
         if (!checkEquals(pattern(1,2,3), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])){
-          error += "<span class='testfailed'>Failed Test1: pattern(1,2,3)</span><br />";
-          good = false;
-        } else {
-          error += "Passed Test1<br />";
-        } 
-        
-        if (!checkEquals(pattern(2,4,6,8), [2, 4, 6, 8, 10, 12, 14, 16, 18, 20] )){
-          error += "<span class='testfailed'>Failed Test2: pattern(2,4,6,8)</span><br />";
-          good = false;
-        } else {
-          error += "Passed Test2<br />";
-        } 
-        
-        if (!checkEquals(pattern(1.5,3,6,12), [1.5, 3, 6, 12, 24, 48, 96, 192, 384, 768] )) {
-          error += "<span class='testfailed'>Failed Test3:  pattern(1.5,3,6,12)</span><br />";
-          good = false;
-        } else {
-          error += "Passed Test3<br />";
-        } 
-        
-        if (!checkEquals(pattern(0,0,0), [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] )) {
-          error += "<span class='testfailed'>Failed Test4: pattern(0,0,0)</span><br />";
-          good = false;
-        } else {
-          error += "Passed Test4<br />";
-        } 
-        
-        if (!checkEquals(pattern(1,4,5), [1, 4, 5, 1, 4, 5, 1, 4, 5, 1] )) {
-          error += "<span class='testfailed'>Failed Test5: pattern(1,4,5)</span><br />";
-          good = false;
-        } else {
-          error += "Passed Test5<br />";
-        } 
+            error += "<span class='testfailed'>Failed Test1: pattern(1,2,3)</span> You output: " + pattern(1,2,3) + " <br />";
+
+            good = false;
+          } else {
+            error += "Passed Test1<br />";
+          } 
+          
+          if (!checkEquals(pattern(2,4,6,8), [2, 4, 6, 8, 10, 12, 14, 16, 18, 20] )){
+            error += "<span class='testfailed'>Failed Test2: pattern(2,4,6,8)</span> You output: " + pattern(2,4,6,8) + " <br />";
+            good = false;
+          } else {
+            error += "Passed Test2<br />";
+          } 
+          
+          if (!checkEquals(pattern(1.5,3,6,12), [1.5, 3, 6, 12, 24, 48, 96, 192, 384, 768] )) {
+            error += "<span class='testfailed'>Failed Test3:  pattern(1.5,3,6,12)</span> You output: " + pattern(1.5,3,6,12) + " <br />";
+            good = false;
+          } else {
+            error += "Passed Test3<br />";
+          } 
+          
+          if (!checkEquals(pattern(0,0,0), [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] )) {
+            error += "<span class='testfailed'>Failed Test4: pattern(0,0,0)</span> You output: " + pattern(0,0,0) + " <br />";
+            good = false;
+          } else {
+            error += "Passed Test4<br />";
+          } 
+          
+          if (!checkEquals(pattern(1,4,5), [1, 4, 5, 1, 4, 5, 1, 4, 5, 1] )) {
+            error += "<span class='testfailed'>Failed Test5: pattern(1,4,5)</span> You output: " + pattern(1,4,5) + " <br />";
+            good = false;
+          } else {
+            error += "Passed Test5<br />";
+          } 
+          
+          if (!checkEquals(pattern(2,4,8, 16, 9), [2,4,8, 16, 9,2,4,8, 16, 9] )) {
+            error += "<span class='testfailed'>Failed Test6: pattern(2,4,8,16,9)</span> You output: " + pattern(2,4,8, 16, 9) + " <br />";
+            good = false;
+          } else {
+            error += "Passed Test6<br />";
+          } 
         
       } else {
         good = false;
