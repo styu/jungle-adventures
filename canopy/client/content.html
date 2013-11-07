@@ -1,8 +1,8 @@
 <template name="content">
 <div class="outercontainer">
   <div class="user-container">
-    {{#if isReady}}
 
+    {{#if isReady}}
     <div class="header">  
     <div class='timer'>
       {{#isolate}}
@@ -11,23 +11,17 @@
     </div>
     <div class='teaminfo'>
       Team <em>{{teamname}}</em>
-      <div class="score">Team Score: <em>{{score}}</em> | {{loginButtons align="right"}}</div>
+      <div class="score">Team Score: <em>{{#isolate}}{{score}}{{/isolate}}</em> | {{loginButtons align="right"}}</div>
     </div>
     </div>
     <div class='leftbar'>
-    	{{#isolate}}
-      {{#if isReady}}
+      
         {{> nav}}
-      {{else}}
-        Loading...
-      {{/if}}
-      {{/isolate}}
+
     </div>
     <div class="content">
     </div>
-    {{else}}
-        Loading...
-      {{/if}}
+    {{/if}}
   </div>
 </div>
 </template>
