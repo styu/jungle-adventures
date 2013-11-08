@@ -12,6 +12,7 @@ define('scoreboard', [], function() {
         sum = _.reduce(points, function(memo, points) {return memo + points; });
       }
       team['score'] = sum;
+      team['beginner'] = curTeam.beginner;
       teams.push(team);
     });
     var finalteams = _.sortBy(teams, function(team) { return team.score; }).reverse();
@@ -40,6 +41,7 @@ define('scoreboard', [], function() {
       });
       team['score'] = sum;
       team['topthree'] = false;
+      team['beginner'] = curTeam.beginner;
       teams.push(team);
     });
     var finalteams = _.sortBy(teams, function(team) { return team.score; }).reverse();

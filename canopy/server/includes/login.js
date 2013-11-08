@@ -16,6 +16,7 @@ define('login', ['questions'], function(questions) {
               profile: { name: member.name, team: info['teamname'] }
             });
             // email verification
+            console.log('sending email to...' + member.name + ' ' + member.email + ' ' + password);
             Email.send({
               to: member.email,
               from: '6470-staff@mit.edu',

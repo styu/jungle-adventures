@@ -8,7 +8,7 @@ define('questions', [], function() {
 // HTML //////////////////////////////////////////
 
     var shortTitle =  ['hello', 'badge', 'folder', 'table', 'compass', 'responsive', 'photo', 'BONUS'];
-    var longTitle =  ['Hello Jungle', 'Badger Badge', 'Mission Report', 'Shopping List', 'Some Compass', 'Footprints', 'Photography', 'BONUS'];
+    var longTitle =  ['Hello Jungle', 'Badger Badge', 'Mission Report', 'Shopping List', 'Some Compass', 'Responsive', 'Photography', 'BONUS'];
     
     var pointValues = [7, 10, 10, 14, 15, 20, 24, 5];
     var timelengths = [5, 5,  5,  5,  5,  5,  5, 10];
