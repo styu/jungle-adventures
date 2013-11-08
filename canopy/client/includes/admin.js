@@ -4,7 +4,11 @@ define('admin', [], function() {
 
   return {
     teams: function() {
-      return Teams.find();
+      var teams = Teams.find().fetch(); 
+      return _.sortBy(teams, function(team) {
+        console.log(team.teamName);
+	    return team.teamName.toUpperCase();
+	  }); 
     },
 
     hasStarted: function() {
