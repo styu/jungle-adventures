@@ -1,36 +1,28 @@
 <template name='js8'>
   <h1>Q8. BONUS: The Meteor Attack</h1>
   <h2>Mission Briefing</h2>
-  <p>This is a <em>BONUS</em> </p>
+  <p>This is a <em>BONUS</em> question, worth a possible <em>20</em> points. The scoring is explained below</p>
   <p>A meteor has crashed into the jungle and all cell networks are down. You're standing next to the meteor and want to find your friends. Luckily you have an advanced radio runs Meteor and so does everyone else. You need to implement a low-level transport protocol for communication between two radios. The network guarantees to deliver a batch of messages reliably: everything sent in one batch will arrive but the order of messages inside batch may be shuffled. Every message is encoded as a 32-bit signed integer, one batch may look like: 
 [10, 0, 42, -1024, 2147483647]</p>
+<p>Let's say it was sent from device A to device B in that order. Device B will receive all the messages but the order may be different. One batch contains 1 to 65000 elements.</p>
+<p>
+Design a protocol or encoding method for sending messages between two devices and the order is always correct. Your implementation may send more messages than needed but the number of messages will be considered in grading.
+</p>
   <h2>Objective</h2>
   <p>
-    Write a program to 'click' the buttons such that you get 1000 of them correct in a row. The button you should be clicking is indicated in the div with id <span class="code">should-click</span>. Fetch the button number from there. Once you have gotten 1000 correct in a row, this question will automatically be checked off. 
+   Write two JavaScript functions: <span class="code">encode()</span> and <span class="code">decode()</span>.
+   </p><p><span class="code">encode()</span> is given an array of 32bit signed integers - messages should be sent. Encode returns an array of 32 bit signed integers - the batch that device A will send over the network. 
+   </p><p><span class="code">decode()</span> is given the batch received by device B over the network with numbers shuffled inside. Decode should return the batch of  messages first device intended to send with all the numbers in the correct order.
   </p>
-    <ul>
-      <li>The ID of the span containing what to click is <span class="code">should-click</span></li>
-      <li>The ID of button0 is <span class="code">b0</span></li>
-      <li>The ID of button1 is <span class="code">b1</span></li>
-    </ul>
-  <div class="coding">
-  
-  </div>
-  <h2>Checkoff</h2>
+<ul>
+<li>Functions <span class="code">encode()</span> and <span class="code">decode()</span> do not share any variables and are executed separately.</li>
+</ul>
+  <h2>Scoring</h2>
   <p>
-    Use this box to execute some JavaScript. <br />
-  <em>DO NOT</em> work in this textbox. We will not save your code!
+  We will test this function with multiple batches of messages. Your score will be based on (# of messages you intend to send) / (# of messages your encoding actually sent). We will then multiply this by 20.
   </p>
-  <div class="js3area">
-   <textarea class="js3textarea">// Your JavaScript Here..
-// You can also use console..
-   </textarea>
-	<div class="js3controls">
-		<button id="b0" class="b0">b0</button>
-		<button id="b1" class="b1">b1</button>
-		<div class="js3rule">You should click <span id="should-click" class="should-click code">0</span></div>
-		<div class="js3output">You've gotten <span class="inarow">0</span> in a row</div>
-	</div>
-  </div>
-  <button class="js3submit">Submit Code</button>
-</template>
+  <h2>Submission</h2>
+  <p>
+  	Save your two functions in a <span class="code">q8meteor.js</span> file. Once the JavaScript portion is over, email your file to vhung@mit.edu. We won't be grading this question unless it is absolutely necessary to determine your ranking.
+  </p>
+  </template>
