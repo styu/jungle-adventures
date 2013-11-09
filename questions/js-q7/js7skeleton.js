@@ -1,3 +1,13 @@
+// Life definition of game behavior
+// Author: Kimberly Toy
+
+// Constructs a Life object given a width, height
+// and density, where 0<density<=1
+// If not specified, density is a default of 0.5
+// Cells are placed randomly over the board with a 
+// population size given by the density percentage
+// User can use a preset grid by passing in a value 
+// for preset and zero for all other parameters
 PathFinder = function(){
 
     // create Life object with the prototype Life.prototype
@@ -16,6 +26,10 @@ PathFinder = function(){
                   [0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1],
                   [0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1]];
 
+    // var grid = [[1, 1, 1],
+    //             [1, 0, 1],
+    //             [1, 1, 1]];
+
     // function to return current state of Life board
     that.container = function(){
         return grid.deepClone();
@@ -30,7 +44,11 @@ PathFinder = function(){
         var y = vertex.y;
         for (var i = 0; i < neighborLocs_x.length; i++){
           if(that.validLocation(x + neighborLocs_x[i]) && that.validLocation(y + neighborLocs_y[i])){
+                  //console.log("vertex");
+                  //console.log(x + neighborLocs[i]);
+                  //console.log(y + neighborLocs[j]);
                   if(grid[x + neighborLocs_x[i]][y + neighborLocs_y[i]]===1){ 
+                      //console.log("live");
                       queue.push(Vertex(x + neighborLocs_x[i], y + neighborLocs_y[i]));
                    }
           }
@@ -43,12 +61,16 @@ PathFinder = function(){
       var set = [];
       var numPaths = 0;
       var solutions = [];
-      queue.push(Path([vertex])); 
-      set.push(Path([vertex])); 
+      queue.push(Path([vertex])); //fix
+      set.push(Path([vertex])); //fix
+      var count = 0;
       while(queue.length>0){
+        count++;
+        //console.log("Q");
+        //console.log(queue);
         var t = queue.shift(); //get a path
         if(sol.compare(t.get_last_vertex_in_path())){ //fix
-          //console.log("I WIN");
+          console.log("I WIN");
           numPaths++;
           solutions.push(t);
           //return numPaths;
@@ -68,6 +90,9 @@ PathFinder = function(){
           for(var i = 0; i < next_vertices.length; i++){ //fix
             var new_path = t.clone();
             new_path.append(next_vertices[i]);
+            //console.log(next_vertices[i]);
+            //console.log("New path");
+            //console.log(new_path);
             if(!set.contains(new_path)){
               set.push(new_path);
               queue.push(new_path);
@@ -77,6 +102,26 @@ PathFinder = function(){
         }//end else
       }
       return solutions;
+    },
+
+    // prints current state of game in console
+    // the printed grid is rotated 90 degrees 
+    // relative to the UI grid
+    that.printGrid = function(){
+        var line = "";
+        for(var i = 0; i < width; i++){
+            for(var j = 0; j < height; j++){
+                if(grid[i][j]===true){
+                    line+="o ";
+                }
+                else{
+                    line+=". ";
+                }
+            }
+            console.log(line);
+            line="";
+        }
+        console.log("\n");
     },
     // returns true if (x, y) is a valid location
     that.validLocation = function(x, y){
@@ -154,9 +199,8 @@ Path = function(vertex_list){
     return ts;
   },
   that.print = function(){
-    //console.log('PATH');
-    //console.log(that.to_string());
-    //console.log(that.path.length);
+    console.log('PATH');
+    console.log(that.to_string());
   }
   Object.freeze(that);
   return that;

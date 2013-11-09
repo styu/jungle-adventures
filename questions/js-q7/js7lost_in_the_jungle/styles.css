@@ -1,0 +1,29 @@
+html {
+	max-width: 960px;
+	margin: 10px auto;
+}
+
+body {
+	font-family:'Helvetica Neue', Arial;
+	width: 960px;
+}
+
+table {
+	display: inline-block;
+	margin: 15px 0;
+}
+
+tr{
+	margin-top: 2px;
+}
+
+td {
+	width: 8px;
+	height: 8px;
+	margin-left: 2px;
+}
+
+td.color {
+	width: 8px;
+	margin-left: 2px;
+}

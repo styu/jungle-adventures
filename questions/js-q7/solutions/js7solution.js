@@ -48,7 +48,7 @@ PathFinder = function(){
       while(queue.length>0){
         var t = queue.shift(); //get a path
         if(sol.compare(t.get_last_vertex_in_path())){ //fix
-          //console.log("I WIN");
+          console.log("I WIN");
           numPaths++;
           solutions.push(t);
           //return numPaths;
@@ -154,9 +154,9 @@ Path = function(vertex_list){
     return ts;
   },
   that.print = function(){
-    //console.log('PATH');
+    console.log('PATH');
     //console.log(that.to_string());
-    //console.log(that.path.length);
+    console.log(that.path.length);
   }
   Object.freeze(that);
   return that;

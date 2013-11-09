@@ -52,22 +52,22 @@ li {
 	color: rgb(0, 136, 204);
 }
 
-#canvas_container {
+table {
 	display: inline-block;
 	margin: 15px 0;
 }
 
-#canvas_container tr{
+tr{
 	margin-top: 2px;
 }
 
-#canvas_container td {
+td {
 	width: 8px;
 	height: 8px;
 	margin-left: 2px;
 }
 
-#canvas_container td.alive {
+td.alive {
 	width: 8px;
 	margin-left: 2px;
 }

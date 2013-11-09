@@ -76,7 +76,7 @@ $(function () {
     var sol = path_finder.breadth_first_search(Vertex(0, 0), Vertex(11, 11));
     //pp(sol);
     for(var i = 0; i < sol.length; i++){
-        //console.log(sol[i]);
+        console.log(sol[i]);
         var grid = makeGrid(sol[i].path);
         paint(grid);
     }
