@@ -33,7 +33,7 @@ define('checkoff', [], function() {
               "contest.html.$.solved" : !question.solved}
         });
 
-        var unlocked = [7, 17, 27, 41, 56];
+        var unlocked = [7, 17, 27, 41, 56, 60];
         team = Teams.findOne({_id:id});
         var totalpoints = getPoints(team, 'html');
         _.each(unlocked, function(points, index) {
@@ -72,7 +72,7 @@ define('checkoff', [], function() {
           }
         );
 
-        var unlocked = [7, 17, 27, 41, 56];
+        var unlocked = [10, 20, 30, 40, 50, 65];
         team = Teams.findOne({_id:id});
         var totalpoints = getPoints(team, 'js');
         _.each(unlocked, function(points, index) {

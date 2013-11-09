@@ -102,13 +102,6 @@ require(['timer', 'admin'], function(timer, admin) {
                 Meteor.subscribe('teams')];
       },
 
-      before: function() {
-        if (!Meteor.user()) {
-          this.redirect('/');
-          this.stop();
-        }
-      },
-
       action: function() {
         this.render('scoreboard', {to: 'main'});
       }

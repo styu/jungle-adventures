@@ -9,17 +9,17 @@ $(function() {
 
   $(document).keydown(function(e){
     if (e.keyCode == 37) {//left
-      $(elephant).animate({left: "-=50"}, 200);
+      $(elephant).animate({left: "-=5"}, 1);
       if(!is_left){
         flip_left(elephant);
         is_left = true;
       }
     }
     else if(e.keyCode == 38){//up
-      $(elephant).animate({top: "-=50"}, 200);
+      $(elephant).animate({top: "-=5"}, 1);
     }
     else if(e.keyCode == 39){//right
-      $(elephant).animate({left: "+=50"}, 200);
+      $(elephant).animate({left: "+=5"}, 1);
       if(is_left){
         flip_right(elephant);
         is_left = false;
@@ -27,7 +27,7 @@ $(function() {
       }
     }
     else if(e.keyCode == 40){//down
-      $(elephant).animate({top: "+=50"}, 200);
+      $(elephant).animate({top: "+=5"}, 1);
     }
     else{
       console.log("Unhandled key press");
