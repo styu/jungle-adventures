@@ -53,12 +53,12 @@ define('questions', [], function() {
 
 // SQL //////////////////////////////////////////
 
-    var shortTitle =  ['alert', 'pattern', 'button', 'arrows', 'ajax', 'moving', 'paths', 'meteor'];
-    var longTitle =  ['Alert Jungle', 'Patterns', 'Button Mash', 'Flying Arrows', 'Interception', 'Moving Critters', 'Lost in the Jungle', 'Meteor Attack'];
+    var shortTitle =  ['q1', 'q2', 'q3', 'q4', 'q5', 'q6'];
+    var longTitle =  ['Finder', 'Sourcery', 'Profiles', 'Cross Country', 'Poison Syringe', 'A and B'];
     
-    var pointValues = [7, 10, 10, 14, 15, 20, 24, 0];
-    var timelengths = [5, 5,  5,  5,  5,  5,  15, 0];
-    for (var i = 1; i <= 8 ; i++) {
+    var pointValues = [10, 12, 15, 18, 20, 25];
+    var timelengths = [3, 5,  7,  10,  10,  10];
+    for (var i = 1; i <= 6 ; i++) {
       questions['sql'].push({id: i,
                             shorttitle: shortTitle[i-1],
                             title: longTitle[i-1],
