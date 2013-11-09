@@ -23,7 +23,7 @@ define('login', ['questions'], function(questions) {
               replyTo: '6470-staff@mit.edu',
               subject: 'Your 6.470 Jungle Adventures Account',
               html: 'Hello ' + member.name + ',<br /><br />' +
-                    'Your JungleAdventures Account has been created. Please login to <url> with your email and the following password: ' + password + '<br /><br />' +
+                    'Your JungleAdventures Account has been created. Please login to with your email and the following password: ' + password + '<br /><br />' +
                     'Thanks,<br />' +
                     'Your Friendly 6.470 Monkey'
             });
