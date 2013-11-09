@@ -13,6 +13,18 @@ define('scoreboard', [], function() {
       }
       team['score'] = sum;
       team['beginner'] = curTeam.beginner;
+      lastcheckoff = ''
+      for (i in curTeam.contest[questionType]) {
+        d = curTeam.contest[questionType][i].time
+        if (d != null) {        
+	      	if (lastcheckoff == ''){
+	      		lastcheckoff = d;
+	      	} else if (lastcheckoff < d) {
+	      		lastcheckoff = d;
+	      	}
+      	}
+      }
+      team['lastcheckoff'] = lastcheckoff;
       teams.push(team);
     });
     var finalteams = _.sortBy(teams, function(team) { return team.score; }).reverse();
