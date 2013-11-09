@@ -28,7 +28,7 @@
 
 	<body>
 		<h2>Login to the super secret 6.470 jungle server</h2>
-		<h2>(Challenge 3)</h2>
+		<h2>(Challenge 4)</h2>
 		<p>Can you figure out the secret message protected by the 'root' user?</p>
 		<p>Hint: It's a 4 digit number.</p>
 
