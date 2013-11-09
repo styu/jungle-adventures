@@ -1,5 +1,5 @@
 <html>
-    <head><title>Problem 6</title></head>
+    <head><title>Challenge 6</title></head>
     <body>
         <h2>Challenge 6</h2>
         <p>Can you get an alert with "hello world" by visiting this page?</p>

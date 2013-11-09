@@ -22,15 +22,18 @@
 
 <html>
 	<head>
-		<title>Problem 3</title>
+		<title>Challenge 3</title>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 	</head>
 
 	<body>
 		<?php print_login_info(); ?>
 		<?php echo 'Secret:  ' . $secret ?>
+		<p>Can you cause the page to alert the contents of the secret as soon as it is visited?</p>
+		<p>Hint: The secret is stored -- somehow -- on your computer, perhaps with the name '6470JUNGLEADVENTURES'</p>
+		<h2>Your Jungle-book Feed:</h2>
 		<p>
-			<textarea id="post-contents" style="width:500px; height:300px"></textarea><br />
+			<textarea id="post-contents" style="width:500px; height:50px; font-size:16px" placeholder="Write your post here"></textarea><br />
 			<button id="submit">Submit</button>
 		</p>
 		<div id="posts">
