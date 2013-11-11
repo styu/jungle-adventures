@@ -1,0 +1,2 @@
+// The input to the SQL queries are not sanitized, therefore you can do the classic SQL injection attack: 
+// http://cliu2014.scripts.mit.edu/6470-jungle-security/prob5-battlebegins/show.php?username=me'%20or%20'1'='1
