@@ -114,6 +114,30 @@ require(['login', 'checkoff'], function(login, checkoff) {
           Status.update({_id: status._id},
                         {$set:{'started': true, 'timeStart':date}});
         }
+      },
+      unlockAll: function(user) {
+        if (Roles.userIsInRole(user, ["admin"])) {
+          var status = Status.findOne({title: "questionStatus"});
+          Status.update({_id: status._id}, {$set:{'status': 'finish',
+                                       'timestart': 0}});
+          console.log(status);
+          Teams.find().forEach(function(team) {
+            _.each(team.contest.html, function(question) {
+              Teams.update({_id:team._id, "contest.html.file": question.file},
+                           {$set: {"contest.html.$.locked": false}});
+            });
+
+            _.each(team.contest.js, function(question) {
+              Teams.update({_id:team._id, "contest.js.file": question.file},
+                           {$set: {"contest.js.$.locked": false}});
+            });
+
+            _.each(team.contest.sql, function(question) {
+              Teams.update({_id:team._id, "contest.sql.file": question.file},
+                           {$set: {"contest.sql.$.locked": false}});
+            });
+          })
+        }
       }
     });
   });

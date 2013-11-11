@@ -138,6 +138,29 @@ require(['login', 'timer', 'admin', 'checkoff', 'scoreboard'], function(login, t
     }
   });
 
+  Template.sqlnav.helpers({
+    currentQuestions: function() {
+      if (Meteor.user()) {
+        var teamname = Meteor.user().profile.team;
+        var team = Teams.findOne({teamName: teamname});
+        return team.contest['sql'];
+      }
+    },
+    isReady: isReady,
+  });
+
+  Template.sqlnav.events({
+    'click .hover': function(event, template) {
+      if ($('.sql').hasClass('hidden')) {
+        $('.sql').slideDown();
+        $('.sql').removeClass('hidden');
+      } else {
+        $('.sql').slideUp();
+        $('.sql').addClass('hidden');
+      }
+    }
+  });
+
   // Scoreboard
   Template.scoreboard.teams = function() {
     return scoreboard.scoreboard();
@@ -171,10 +194,14 @@ require(['login', 'timer', 'admin', 'checkoff', 'scoreboard'], function(login, t
     'click .start': function (event, template) {
       if (Meteor.user() && Roles.userIsInRole(Meteor.user(), ["admin"])) {
         var newstatus = event.currentTarget.id;
-        var t = timer;
-        Meteor.call("updateStatus", newstatus, Meteor.user(), function(err, res) {
-          t.resetTimer();
-        });
+        if (newstatus === 'finish') {
+          Meteor.call("unlockAll", Meteor.user());
+        } else {
+          var t = timer;
+          Meteor.call("updateStatus", newstatus, Meteor.user(), function(err, res) {
+            t.resetTimer();
+          });
+        }
       }
     },
     'tap .checkoffbtn': admin.checkoffClick,

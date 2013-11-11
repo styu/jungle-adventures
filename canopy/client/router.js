@@ -49,6 +49,9 @@ require(['timer', 'admin'], function(timer, admin) {
           },
           isSQL: function() {
             return Status.findOne({title: 'questionStatus'}).status === 'sql';
+          },
+          isDone: function() {
+            return Status.findOne({title: 'questionStatus'}).status === 'finish';
           }
         }
       },

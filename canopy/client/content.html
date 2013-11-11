@@ -23,7 +23,13 @@
           {{> htmlnav}}
           {{> jsnav}}
         {{/if}}
-        {{> nav}}
+        {{#if isDone}}
+          {{> htmlnav}}
+          {{> jsnav}}
+          {{> sqlnav}}
+        {{else}}
+          {{> nav}}
+        {{/if}}
 
     </div>
     <div class="content">
