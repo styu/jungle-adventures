@@ -57,11 +57,11 @@ define('scoreboard', [], function() {
       teams.push(team);
     });
     var finalteams = _.sortBy(teams, function(team) { return team.score; }).reverse();
-    finalteams[0]['topthree'] = true;
-    if (finalteams.length > 1)
-      finalteams[1]['topthree'] = true;
-    if (finalteams.length > 2)
-      finalteams[2]['topthree'] = true;
+    // finalteams[0]['topthree'] = true;
+    // if (finalteams.length > 1)
+    //   finalteams[1]['topthree'] = true;
+    // if (finalteams.length > 2)
+    //   finalteams[2]['topthree'] = true;
     for (i in finalteams){
       finalteams[i]['place'] = (parseInt(i) + 1);
     }
